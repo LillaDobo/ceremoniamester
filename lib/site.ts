@@ -1,6 +1,5 @@
 export const site = {
   name: "Ricsi",
-  creator: "Dobó Heléna Lilla", // Matches the existing repository LICENSE.
   email: "",
   phone: "",
   basePrice: 225000,

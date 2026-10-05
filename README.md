@@ -1,10 +1,10 @@
-# Ricsi – ceremóniamester
+# Faur Richárd – ceremóniamester
 
 Magyar nyelvű, mobile-first, statikus weboldal Next.js App Router, TypeScript és Tailwind CSS alapokon. Világos bézs felületek, játékosan elforgatott kártyák, meleg színek és sötét fotóátmenet. Nincs backend, adatbázis, analitika vagy külső betűkészlet.
 
 ## Oldalak
 
-- `/`: bemutatkozás → nagykép → hogyan lettem ceremóniamester → pár szó rólam → galéria → idézet → szolgáltatások → vélemények → kapcsolat és footer.
+- `/`: bemutatkozás → nagykép → hogyan lettem ceremóniamester → pár szó rólam → idézet → galéria → szolgáltatások → kapcsolat → vélemények → footer.
 - `/kapcsolat/`: elérhetőségek, útmutató az első üzenethez és az ingyenes első konzultáció menete. A fejléc és a főoldali gombok ide vezetnek.
 
 Az első konzultáció ingyenessége a főoldal tetején, alján, és a kapcsolatoldalon is megjelenik. A „Hogyan lettem ceremóniamester?” történet a megadott referenciából származik; további mintaszövegek jóváhagyást igényelnek. Három elforgatott kártya látható: Empatikus, Laza és Harmadik jelző. Az utolsó kártyán a „Még nem végleges” felirat jelzi a későbbi szövegcserét. A címbe két kis polaroidfotó került.
@@ -86,10 +86,12 @@ Egyéni domainnél hagyd üresen a változót. Az `out/` tartalmát kell publik�
 
 Magyar dokumentumnyelv, szemantikus szekciók, billentyűzettel használható natív szolgáltatásleírások, látható fókusz és tartalomra ugró link mindkét oldalon. A mobilmenü állapotát `aria-expanded` jelzi, Escape-pel bezárható. A galéria nem indul el automatikusan, és tiszteletben tartja a csökkentett mozgás beállítását.
 
-## Fejléc és footer
+## Fejléc, bemutatkozás és footer
 
-A fejlécben a két soros „Richárd / Faur” név jobb oldalon áll, a navigáció asztali nézetben középre igazított. A kapcsolatlink és a footer kapcsolatlinkje finom aláhúzás- és nyílanimációt kapott; csökkentett mozgás esetén az animáció leáll.
+Az oldal böngészőcíme „Faur Richárd”. A fejlécben a két soros „Faur / Richárd” név bal oldalon áll, a navigáció asztali nézetben középre igazított, a kapcsolatlink jobb oldalon. A szélesebb főcím két polaroidfotót tartalmaz.
 
-A footer „Ricsi” feliratot, kapcsolati navigációt és készítői kreditet tartalmaz. Nincs benne ingyenes konzultációs szöveg vagy ceremóniamester alcím. A készítő neve (`site.creator`) a meglévő LICENSE szerzőmegjelöléséből származik. A credit nem állítja, hogy a fotók és minden szöveg szerzői joga a fejlesztőé. A meglévő MIT licenc változatlan maradt.
+A „Pár szó rólam” blokkban bal oldalon a szöveg, jobb oldalon egy álló polaroidfotó szerepel. Utána az idézet és a galéria következik. A szolgáltatások után a kapcsolatfelhívás, majd a vélemények jelennek meg. A szolgáltatások új, kétszínű, témához illő rajzolt ikonokat kaptak.
 
-A favicon bézs alapon rajzolt mikrofon. A szolgáltatásmozaik egységes, enyhén eltérő bézs árnyalatokat használ.
+A footer „Faur Richárd” feliratot és a kért „© 2026 Faur Richárd” copyright sort tartalmazza (az év automatikus). A készítői credit kikerült, a meglévő repólicenc változatlan maradt. A footer kapcsolatoldalra vezető linkjének felirata „Beszélgessünk”; a „Közös pillanatok” és „Szolgáltatások” linkek egymás mellett állnak. A kapcsolatlinkek finom animációt kaptak, csökkentett mozgás esetén kikapcsolva.
+
+A favicon bézs alapon rajzolt mikrofon. A szolgáltatásmozaik egységes, enyhén eltérő bézs árnyalatokat használ; az ár kizárólag a kapcsolatoldalon szerepel.

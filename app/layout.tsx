@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Ricsi • Ceremóniamester | A ti napotok, a ti történetetek",
-  description: "Személyes, felszabadult esküvő, átgondolt szervezéssel. Ismerjétek meg Ricsit, és tervezzük meg együtt a nagy napot!",
+  title: "Faur Richárd",
+  description: "Személyes, felszabadult esküvő, átgondolt szervezéssel. Ismerjétek meg Faur Richárdot, és tervezzük meg együtt a nagy napot!",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

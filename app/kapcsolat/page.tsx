@@ -5,7 +5,7 @@ import { Footer } from "@/components/footer";
 import { Arrow, Motif } from "@/components/icons";
 import { site } from "@/lib/site";
 
-export const metadata: Metadata = { title: "Kapcsolatfelvétel | Ricsi ceremóniamester", description: "Az első konzultáció ingyenes. Meséljetek az esküvő időpontjáról, a helyszínről és az elképzeléseitekről, és ismerjük meg egymást!" };
+export const metadata: Metadata = { title: "Kapcsolatfelvétel | Faur Richárd", description: "Az első konzultáció ingyenes. Meséljetek az esküvő időpontjáról, a helyszínről és az elképzeléseitekről, és ismerjük meg egymást!" };
 const firstMessage = "Szia Ricsi!\n\nA nevünk: \nAz esküvő tervezett időpontja: \nA helyszín / település: \nA vendégek várható száma: \nIlyen esküvőt képzelünk el: \nAmiben segítséget szeretnénk: \nEzen az elérhetőségen tudsz válaszolni: \n\nSzeretnénk egyeztetni az ingyenes első konzultációról.\n";
 
 export default function ContactPage() {
