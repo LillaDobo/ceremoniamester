@@ -290,9 +290,8 @@ h2 { font-size:clamp(35px,4.7vw,62px); letter-spacing:-.055em; line-height:1.13;
 .contact-price p { font-family:Georgia,serif; font-size:27px; margin-bottom:10px; }
 .contact-price strong { font-weight:400; white-space:nowrap; }
 .contact-price small { display:block; font-size:11px; line-height:1.8; }
-.site-footer { display:block; padding-block:45px 25px; border-top:1px solid var(--line); }
+.site-footer { display:block; padding-block:45px 25px; }
 .footer-main { display:grid; gap:30px; padding-bottom:35px; }
-.footer-brand { font-family:Georgia,serif; font-size:44px; letter-spacing:-2px; line-height:1; width:fit-content; }
 .footer-contact p { font-size:22px; line-height:1.3; }
 .footer-contact-link { font-size:13px; }
 .footer-details { text-align:left; font-size:12px; }
@@ -305,7 +304,7 @@ h2 { font-size:clamp(35px,4.7vw,62px); letter-spacing:-.055em; line-height:1.13;
   .desktop-nav { margin-left:0; justify-self:center; gap:22px; }
   .header-contact { margin-left:0; gap:10px; font-size:11px; }
   .site-footer { padding-block:55px 28px; }
-  .footer-main { grid-template-columns:1fr 1.5fr 1fr; gap:40px; align-items:start; padding-bottom:45px; }
+  .footer-main { grid-template-columns:1fr 1fr; gap:40px; align-items:start; padding-bottom:45px; }
   .footer-details { align-items:flex-end; text-align:right; }
 }
 @media(min-width:1100px) { .desktop-nav { gap:32px; } .header-contact { font-size:12px; } }
@@ -329,7 +328,6 @@ h2 { font-size:clamp(35px,4.7vw,62px); letter-spacing:-.055em; line-height:1.13;
 .about-polaroid figcaption { font-family:Georgia,serif; font-size:19px; font-style:italic; padding:19px 8px; text-align:center; }
 .service-icon { width:56px; }
 .reviews-section { padding-top:75px; }
-.footer-brand { font-size:clamp(28px,3.2vw,44px); letter-spacing:-.045em; }
 .footer-links { display:flex; flex-direction:row; align-items:center; gap:20px; white-space:nowrap; }
 .footer-main { grid-template-columns:1fr; }
 @media(min-width:768px) {
@@ -340,12 +338,11 @@ h2 { font-size:clamp(35px,4.7vw,62px); letter-spacing:-.055em; line-height:1.13;
   .about-mini { grid-template-columns:1.2fr 1fr; gap:55px; padding-block:70px 100px; }
   .about-polaroid { width:calc(100% - 30px); margin-inline:auto; }
   .reviews-section { padding-top:100px; }
-  .footer-main { grid-template-columns:1.1fr 1.25fr 1.15fr; gap:30px; }
+  .footer-main { grid-template-columns:1fr 1fr; gap:30px; }
 }
 @media(min-width:768px) and (max-width:1000px) {
   .hero-title { font-size:8.9vw; }
   .about-mini { gap:35px; }
   .about-mini h2 { font-size:37px; }
   .footer-main { grid-template-columns:1fr 1fr; }
-  .footer-details { grid-column:1 / -1; align-items:flex-start; text-align:left; }
 }

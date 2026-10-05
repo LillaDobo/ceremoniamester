@@ -24,5 +24,5 @@ export default function ContactPage() {
       ["02", "Megtaláljuk a közös hangot", "Meséltek az elképzeléseitekről, én pedig arról, hogyan tudok segíteni. Az első konzultáció ingyenes."],
       ["03", "Megbeszéljük a folytatást", "Ha szívesen dolgoznánk együtt, átbeszéljük a szolgáltatásokat és a következő lépéseket."],
     ].map(([number, title, text]) => <article key={number}><span className="step-number">{number}</span><h3>{title}</h3><p>{text}</p></article>)}</div></section>
-  </main><Footer /></>;
+  </main><Footer backToTop /></>;
 }
