@@ -30,7 +30,7 @@ export default function Home() {
 
       <section className="quote-section"><div className="section-shell"><Motif kind="glass" /><p className="eyebrow">Ami a felszabadultság mögött van</p><p className="quote">„Egy sikeres esküvő titka<br /><span className="italic">a profi háttérmunka.”</span></p></div></section>
 
-      <section id="szolgaltatasok" className="services section-shell section-space"><div className="section-heading"><div><p className="eyebrow">Amiben számíthattok rám</p><h2>A háttér biztos.<br /><span className="italic">A pillanat a tiétek.</span></h2></div><p>Nyissátok ki, ami érdekel.<br />A részleteket hozzátok igazítjuk.</p></div><Services /><div className="price-strip"><div><span className="eyebrow">Ceremóniamesteri szolgáltatás</span><p>Alapár: <strong>{new Intl.NumberFormat("hu-HU").format(site.basePrice)} Ft</strong></p><small>A részleteket az első, ingyenes konzultáción egyeztetjük.</small></div><Link href="/kapcsolat/" className="text-link">Beszéljük át <Arrow /></Link></div></section>
+      <section id="szolgaltatasok" className="services section-shell section-space"><div className="section-heading"><div><p className="eyebrow">Amiben számíthattok rám</p><h2>A háttér biztos.<br /><span className="italic">A pillanat a tiétek.</span></h2></div><p>Nyissátok ki, ami érdekel.<br />A részleteket hozzátok igazítjuk.</p></div><Services /></section>
 
       <section id="referenciak" className="reviews-section section-shell section-space"><p className="eyebrow">Akikkel együtt ünnepeltem</p><h2>Így élték meg<br /><span className="italic">a párok.</span></h2><Reviews /></section>
 

@@ -7,7 +7,7 @@ Magyar nyelvű, mobile-first, statikus weboldal Next.js App Router, TypeScript �
 - `/`: bemutatkozás → nagykép → hogyan lettem ceremóniamester → pár szó rólam → galéria → idézet → szolgáltatások → vélemények → kapcsolat és footer.
 - `/kapcsolat/`: elérhetőségek, útmutató az első üzenethez és az ingyenes első konzultáció menete. A fejléc és a főoldali gombok ide vezetnek.
 
-Az első konzultáció ingyenessége a főoldal tetején, alján, a footerben és a kapcsolatoldalon is megjelenik. A „Hogyan lettem ceremóniamester?” történet a megadott referenciából származik; további mintaszövegek jóváhagyást igényelnek. Három elforgatott kártya látható: Empatikus, Laza és Harmadik jelző. Az utolsó kártyán a „Még nem végleges” felirat jelzi a későbbi szövegcserét. A címbe két kis polaroidfotó került.
+Az első konzultáció ingyenessége a főoldal tetején, alján, és a kapcsolatoldalon is megjelenik. A „Hogyan lettem ceremóniamester?” történet a megadott referenciából származik; további mintaszövegek jóváhagyást igényelnek. Három elforgatott kártya látható: Empatikus, Laza és Harmadik jelző. Az utolsó kártyán a „Még nem végleges” felirat jelzi a későbbi szövegcserét. A címbe két kis polaroidfotó került.
 
 ## Fejlesztés
 
@@ -63,7 +63,7 @@ Az e-mail és telefon szándékosan üres. Valós adatok megadása után a kapcs
 
 Hat mozaikos, natív lenyitható szolgáltatás: közös tervezés és forgatókönyvírás, helyszín-előkészítés, az egész nap koordinálása, szolgáltatói kommunikáció, játékok és hangulat, opcionális szertartásvezetés. A két független oszlopban egy kártya kinyitása nem nyújtja meg a másik oszlop kártyáit.
 
-A bemutatkozás, célkitűzés és fiatalos esküvőkről szóló szöveg a kapott tartalom alapján, helyesírási javításokkal került be. A szolgáltatások után 225 000 Ft-os alapár látható, a `site.basePrice` mezőből.
+A bemutatkozás, célkitűzés és fiatalos esküvőkről szóló szöveg a kapott tartalom alapján, helyesírási javításokkal került be. A 225 000 Ft-os alapár kizárólag a kapcsolatoldalon látható, a `site.basePrice` mezőből.
 
 ## GitHub Pages
 
@@ -85,3 +85,11 @@ Egyéni domainnél hagyd üresen a változót. Az `out/` tartalmát kell publik�
 ## Hozzáférhetőség
 
 Magyar dokumentumnyelv, szemantikus szekciók, billentyűzettel használható natív szolgáltatásleírások, látható fókusz és tartalomra ugró link mindkét oldalon. A mobilmenü állapotát `aria-expanded` jelzi, Escape-pel bezárható. A galéria nem indul el automatikusan, és tiszteletben tartja a csökkentett mozgás beállítását.
+
+## Fejléc és footer
+
+A fejlécben a két soros „Richárd / Faur” név jobb oldalon áll, a navigáció asztali nézetben középre igazított. A kapcsolatlink és a footer kapcsolatlinkje finom aláhúzás- és nyílanimációt kapott; csökkentett mozgás esetén az animáció leáll.
+
+A footer „Ricsi” feliratot, kapcsolati navigációt és készítői kreditet tartalmaz. Nincs benne ingyenes konzultációs szöveg vagy ceremóniamester alcím. A készítő neve (`site.creator`) a meglévő LICENSE szerzőmegjelöléséből származik. A credit nem állítja, hogy a fotók és minden szöveg szerzői joga a fejlesztőé. A meglévő MIT licenc változatlan maradt.
+
+A favicon bézs alapon rajzolt mikrofon. A szolgáltatásmozaik egységes, enyhén eltérő bézs árnyalatokat használ.
