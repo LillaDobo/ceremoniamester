@@ -7,7 +7,7 @@ Magyar nyelvű, mobile-first, statikus weboldal Next.js App Router, TypeScript �
 - `/`: bemutatkozás → nagykép → hogyan lettem ceremóniamester → pár szó rólam → galéria → idézet → szolgáltatások → vélemények → kapcsolat és footer.
 - `/kapcsolat/`: elérhetőségek, útmutató az első üzenethez és az ingyenes első konzultáció menete. A fejléc és a főoldali gombok ide vezetnek.
 
-Az első konzultáció ingyenessége a főoldal tetején, alján, a footerben és a kapcsolatoldalon is megjelenik. A „Hogyan lettem ceremóniamester?” történet a megadott referenciából származik; további mintaszövegek jóváhagyást igényelnek. Két értékkártya maradt: Empatikus és Laza. A harmadik jelzőt szándékosan nem találtuk ki.
+Az első konzultáció ingyenessége a főoldal tetején, alján, a footerben és a kapcsolatoldalon is megjelenik. A „Hogyan lettem ceremóniamester?” történet a megadott referenciából származik; további mintaszövegek jóváhagyást igényelnek. Három elforgatott kártya látható: Empatikus, Laza és Harmadik jelző. Az utolsó kártyán a „Még nem végleges” felirat jelzi a későbbi szövegcserét. A címbe két kis polaroidfotó került.
 
 ## Fejlesztés
 
@@ -29,15 +29,16 @@ npm run typecheck
 
 A build az `out/` mappába exportál mindkét oldalhoz statikus HTML/CSS/JS fájlokat. Helyi megtekintéshez például `npx serve out` használható. Nincs szükség Node.js szerverre az éles kiszolgáláshoz.
 
-## Fotók: összesen tíz
+## Fotók
 
-A valós fotók még nincsenek megadva. Jelenleg egyértelműen jelölt fotóhelyek láthatók, nem kitalált esküvői referenciák.
+A feltöltött ZIP összes, azaz 12 fotója bekerült a projektbe. A `fokep.jpg` a főoldal teljes szélességű nagyképe, a másik 11 kép a galériában szerepel. A címben két galériakép kisebb, polaroidos változatban ismétlődik. A képek `public/images/` alatt WebP formátumban találhatók, legfeljebb 1800 pixel szélesen (a főképnél 2048), EXIF metaadatok nélkül. Az eredeti ZIP változatlan maradt.
 
-1. Másold a képeket a `public/images/` mappába.
-2. A `lib/site.ts` fájlban töltsd ki a `heroPhoto.src` és a kilenc `galleryPhotos` elem `src` mezőjét (például `/images/eskuvo-01.jpg`).
-3. Add meg a megfelelő képleírást az `alt` és feliratot a `caption` mezőkben.
+- `heroPhoto`: a teljes szélességű nagykép.
+- `titlePhotos`: a címbe illesztett két fotó.
+- `galleryPhotos`: a galériaképek sorrendje, feliratai és képleírásai.
+- A `position` mező állítja a képkivágás fókuszpontját.
 
-A főoldal egy nagy fotót és kilenc galériaképet jelenít meg. Asztali nézetben körülbelül 2,4 galériakártya látszik, mobilon 1,2. A galéria érintéssel, nyílgombokkal és billentyűzettel is lapozható; a két végén a gombok visszafordulnak a másik végre. Nincs automatikus forgatás. A jQuery kizárólag a görgetőkonténer pozícióját animálja, a React által kezelt elemeket nem módosítja. A csökkentett mozgás beállítását tiszteletben tartja.
+Asztali nézetben körülbelül 2,4 galériakártya látszik, mobilon 1,2. A galéria érintéssel, nyílgombokkal és billentyűzettel is lapozható; a két végén a gombok visszafordulnak a másik végre. Nincs automatikus forgatás. A jQuery kizárólag a görgetőkonténer pozícióját animálja, a React által kezelt elemeket nem módosítja. A csökkentett mozgás beállítását tiszteletben tartja.
 
 ## Vélemények
 
@@ -60,7 +61,9 @@ Amíg nincs megadott vélemény, a szekció „hamarosan” szöveget és három
 
 Az e-mail és telefon szándékosan üres. Valós adatok megadása után a kapcsolatoldalon és a footerben működő e-mail/híváslinkek jelennek meg. A kapcsolatoldal e-mail-gombja kitöltendő üzenetsablonnal nyitja meg a látogató saját levelezőjét, nem küld automatikusan üzenetet. Az oldal nem gyűjt űrlapadatokat.
 
-Öt mozaikos, natív lenyitható szolgáltatás: közös tervezés, lebonyolítás, kommunikáció a szolgáltatókkal, játékok és hangulat, opcionális szertartásvezetés.
+Hat mozaikos, natív lenyitható szolgáltatás: közös tervezés és forgatókönyvírás, helyszín-előkészítés, az egész nap koordinálása, szolgáltatói kommunikáció, játékok és hangulat, opcionális szertartásvezetés. A két független oszlopban egy kártya kinyitása nem nyújtja meg a másik oszlop kártyáit.
+
+A bemutatkozás, célkitűzés és fiatalos esküvőkről szóló szöveg a kapott tartalom alapján, helyesírási javításokkal került be. A szolgáltatások után 225 000 Ft-os alapár látható, a `site.basePrice` mezőből.
 
 ## GitHub Pages
 
