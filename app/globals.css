@@ -346,3 +346,84 @@ h2 { font-size:clamp(35px,4.7vw,62px); letter-spacing:-.055em; line-height:1.13;
   .about-mini h2 { font-size:37px; }
   .footer-main { grid-template-columns:1fr 1fr; }
 }
+
+/* Shared fluid layout: sections scale together on large displays. */
+:root {
+  --page-gutter:clamp(20px,4vw,100px);
+  --content-width:1760px;
+}
+.section-shell,.site-header,.hero.section-shell {
+  width:calc(100% - var(--page-gutter) * 2);
+  max-width:var(--content-width);
+  margin-inline:auto;
+}
+main,.section-shell,.site-header { min-width:0; }
+.section-shell > *,.footer-main > *,.contact-layout > * { min-width:0; }
+.opening-photo { width:100%; }
+.hero-photo {
+  width:100%;
+  max-width:none;
+  max-height:none;
+  aspect-ratio:5/4;
+}
+.photo-image { width:100%; height:100%; max-width:none; }
+.hero-title { font-size:clamp(34px,8.1vw,144px); }
+.title-polaroid { width:clamp(48px,9vw,160px); height:clamp(60px,11.2vw,198px); }
+.hero-bottom { max-width:none; width:100%; gap:30px; }
+.hero-bottom p { max-width:44ch; }
+.hero-cta { flex-shrink:0; }
+.story-section { gap:clamp(32px,5vw,100px); }
+.story-copy { max-width:42rem; }
+.value-cards { max-width:650px; }
+.about-copy { max-width:48rem; }
+.about-polaroid { max-width:480px; }
+.section-heading > p { max-width:34ch; }
+.contact-hero > p:not(.eyebrow) { max-width:60ch; }
+.contact-hero h1 { max-width:20ch; }
+.contact-layout { gap:clamp(32px,5vw,100px); }
+.first-message { max-width:48rem; }
+.contact-section h2,.quote { text-wrap:balance; }
+.footer-links { gap:clamp(12px,2vw,30px); }
+.desktop-nav { display:none; }
+.menu-toggle { display:flex; }
+.site-header { grid-template-columns:minmax(0,1fr) auto auto; }
+.header-contact { grid-column:2; }
+.menu-toggle { grid-column:3; }
+.mobile-nav { top:100%; left:calc(-1 * var(--page-gutter)); right:calc(-1 * var(--page-gutter)); padding-inline:var(--page-gutter); }
+@media(min-width:600px) {
+  .gallery-slide { flex-basis:calc((100% - 16px) / 1.6); }
+}
+@media(min-width:768px) {
+  .hero-photo { aspect-ratio:9/4; }
+  .gallery-slide { flex-basis:calc((100% - 48px) / 2.4); }
+  .story-section { grid-template-columns:1fr; }
+  .value-cards { width:100%; }
+  .value-card span { font-size:clamp(18px,1.4vw,25px); }
+  .value-card-draft span { font-size:clamp(15px,1.1vw,19px); }
+  .about-mini { grid-template-columns:minmax(0,1.2fr) minmax(0,1fr); gap:clamp(30px,5vw,100px); }
+  .mobile-nav { display:block; }
+}
+@media(min-width:1024px) {
+  .site-header { grid-template-columns:minmax(180px,1fr) auto minmax(180px,1fr); }
+  .desktop-nav { display:flex; grid-column:2; gap:clamp(20px,2vw,38px); }
+  .header-contact { grid-column:3; }
+  .menu-toggle,.mobile-nav { display:none; }
+  .story-section { grid-template-columns:minmax(0,1.15fr) minmax(0,1fr); }
+}
+@media(min-width:1600px) {
+  .section-space { padding-block:clamp(100px,6vw,140px); }
+  .hero { padding-block:80px; }
+  .large-copy { font-size:34px; }
+  .value-card { min-height:235px; padding:30px 14px; }
+  .value-card svg { width:65px; height:65px; }
+  .service-tile { padding-inline:40px; }
+  .service-title { font-size:46px; }
+  .service-tile summary { min-height:245px; }
+  .service-tile-1 summary,.service-tile-4 summary { min-height:285px; }
+  .service-tile-3 summary,.service-tile-6 summary { min-height:260px; }
+}
+@media(max-width:767px) {
+  .about-polaroid { width:min(380px,calc(100% - 20px)); }
+  .contact-spark { display:none; }
+  .button { max-width:100%; }
+}
