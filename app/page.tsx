@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
-import { Arrow, Motif } from "@/components/icons";
+import { Arrow } from "@/components/icons";
 import { CmIcon } from "@/components/cm-icon";
 import { Gallery } from "@/components/gallery";
 import { PhotoContent } from "@/components/photo";
@@ -19,7 +19,7 @@ export default function Home() {
     <main id="tartalom">
       <section className="hero section-shell editorial-hero">
         <p className="eyebrow">Faur Richárd · Ceremóniamester</p>
-        <h1 className="hero-title" aria-label="A nagy nap, ami rólatok szól."><span className="title-line"><span>A NAGY</span><Polaroid photo={titlePhotos[0]} className="polaroid-one" /><span>NAP,</span></span><span className="title-line pointing-line"><span>AMI</span><Polaroid photo={titlePhotos[1]} className="polaroid-two" /><span>RÓLATOK</span></span><span className="title-line title-last-line">SZÓL<span className="title-dot">.</span></span></h1>
+        <h1 className="hero-title" aria-label="A nagy nap, ami rólatok szól."><span className="title-line"><span>A NAGY</span><Polaroid photo={titlePhotos[0]} className="polaroid-one" /><span>NAP,</span></span><span className="title-line title-line-second"><span>AMI</span><Polaroid photo={titlePhotos[1]} className="polaroid-two" /><span>RÓLATOK SZÓL<span className="title-dot">.</span></span></span></h1>
         <div className="hero-bottom"><p>Ti ünnepeltek, én gondoskodom minden másról.</p><span className="consultation-note">Az első konzultáció ingyenes.</span></div>
       </section>
 
@@ -27,7 +27,7 @@ export default function Home() {
 
       <section id="rolam" className="about-background-section about-plain"><div className="about-mini section-shell"><div className="about-copy"><p className="eyebrow">Ki lesz veletek?</p><h2>Sziasztok, Ricsi vagyok.<br /><span className="italic">Örülök nektek.</span></h2><p>{site.introduction}</p><p>{site.goal}</p><div className="difference-copy"><h3>Újhullámú esküvő.<br />A ti szabályaitok szerint.</h3><p>{site.difference}</p></div></div><ValueCards /></div></section>
 
-      <section className="story-section section-shell section-space"><div className="story-copy"><p className="eyebrow">Egy baráti felkérésből indult</p><h2>Hogyan lettem<br /><span className="italic">ceremóniamester?</span></h2><blockquote className="story-opening">„A munka talált meg engem.”</blockquote><details className="story-details"><summary>Tovább a teljes történethez <span aria-hidden="true">+</span></summary><div><p>{site.story}</p>{site.storyContinuation.map(paragraph => <p key={paragraph}>{paragraph}</p>)}<span className="signature">Ricsi</span></div></details></div><div className="story-placeholder" aria-hidden="true" /></section>
+      <section className="story-section full-story section-space"><div className="story-copy section-shell"><p className="eyebrow">Egy baráti felkérésből indult</p><h2>Hogyan lettem <span className="italic">ceremóniamester?</span></h2><blockquote className="story-opening">„A munka talált meg engem.”</blockquote><details className="story-details"><summary>Tovább a teljes történethez <span aria-hidden="true">+</span></summary><div><p>{site.story}</p>{site.storyContinuation.map(paragraph => <p key={paragraph}>{paragraph}</p>)}<span className="signature">Ricsi</span></div></details></div></section>
 
       <section className="quote-section lively-quote infographic-quote"><div className="section-shell quote-layout"><div className="quote-intro"><p className="eyebrow">Jó kezekben. Jó hangulatban.</p><p className="quote">„A sikeres esküvő titka<br /><span className="italic">a jó hangulat és<br />a profi háttérmunka.”</span></p><p className="quote-promise">Velem mindkettőt megkapjátok.</p><p className="quote-explanation">Két dolog, ami együtt működik igazán. Nézzétek meg, mit teszek hozzá az egyikhez és a másikhoz.</p></div><WeddingRecipe /></div></section>
 
@@ -47,7 +47,7 @@ export default function Home() {
       </section>
 
       <section className="new-mood-section section-shell section-space"><div className="section-heading"><div><p className="eyebrow">A ti napotok, a ti hangulatotok</p><h2>Mi áll közel<br /><span className="italic">hozzátok?</span></h2></div><p>A háttérmunkán túl a jó hangulathoz is hozzáteszek.</p></div><MoodPicker /></section>
-      <section className="contact-section"><div className="section-shell"><p className="eyebrow">Kezdjük egy beszélgetéssel</p><h2>Nézzük meg,<br /><span className="italic">mire van szükségetek.</span></h2><p>Meséljetek az időpontról, a helyszínről és arról,<br className="desktop-break" /> hogyan képzelitek el az esküvőtöket.</p><Link className="button button-dark" href="/kapcsolat/">Kapcsolatfelvétel <Arrow /></Link><span className="consultation-note">Az első konzultáció ingyenes.</span><Motif kind="spark" className="contact-spark" /></div></section>
+      <section className="contact-section"><div className="section-shell compact-contact"><div className="contact-copy"><p className="eyebrow">Kezdjük egy beszélgetéssel</p><h2>Nézzük meg,<br /><span className="italic">mire van szükségetek.</span></h2><p>Meséljetek az időpontról, a helyszínről és arról,<br className="desktop-break" /> hogyan képzelitek el az esküvőtöket.</p></div><div className="contact-action"><Link className="button button-dark" href="/kapcsolat/">Kapcsolatfelvétel <Arrow /></Link><span className="consultation-note">Az első konzultáció ingyenes.</span></div></div></section>
     </main><Footer />
   </>;
 }

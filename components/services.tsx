@@ -34,7 +34,7 @@ export function Services() {
       </div>
       <button type="button" className="flip-toggle" aria-expanded={flipped} aria-controls={`service-detail-${index}`} aria-label={`${service.title}: ${flipped ? "kártya visszafordítása" : "részletek"}`}
         onClick={() => { setPinned(flipped ? null : index); setHovered(null); }}>
-        <span className="flip-corner" aria-hidden="true">↻</span>
+
       </button>
     </article>;
   })}</div>;

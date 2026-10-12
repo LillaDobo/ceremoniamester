@@ -815,3 +815,68 @@ body { font-size:17px; }
 }
 
 @media(max-width:1023px) { .story-placeholder { display:none; } }
+
+/* Tighten the vertical rhythm while keeping every interactive state steady. */
+.editorial-hero .hero-title { font-size:clamp(30px,7vw,132px); line-height:1.04; }
+.editorial-hero .title-line-second { display:flex; white-space:nowrap; }
+.editorial-hero { padding-block:50px 35px; }
+.personality-panel { margin-top:0; justify-content:flex-start; }
+.personality-panel h3 { font-size:25px; height:130px; flex-shrink:0; padding-right:0; margin-bottom:10px; }
+.personality-panel .eyebrow { flex-shrink:0; }
+.personality-panel .personality-hint { margin-top:15px; }
+.personality-collage { height:330px; }
+.full-story { width:100%; display:block; }
+.full-story .story-copy { max-width:var(--content-width); }
+.full-story h2 { font-size:clamp(36px,4.5vw,68px); }
+.full-story .story-details > div > p { max-width:none; }
+.full-story .story-details { max-width:none; }
+.gallery-controls { justify-content:flex-end; }
+.new-mood-section .mood-scene { align-items:start; }
+.mood-copy { min-height:330px; }
+.mood-copy h3 { height:110px; margin-bottom:15px; }
+.cm-cards .cm-icon { width:96px; height:96px; margin-bottom:22px; }
+.recipe-flow .flow-label { font-family:"Bodoni Moda",Georgia,serif; font-size:24px; fill:#42392e; }
+.recipe-flow .flow-caption { font-family:"Manrope",Arial,sans-serif; font-size:16px; fill:#786758; }
+.recipe-flow .flow-center { font-family:"Manrope",Arial,sans-serif; font-size:11px; font-weight:600; letter-spacing:.3px; fill:#795b46; }
+.contact-section { padding-block:32px; }
+.contact-section h2 { font-size:clamp(32px,3.3vw,48px); margin-bottom:12px; }
+.contact-section .eyebrow { margin-bottom:12px; }
+.contact-section p:not(.eyebrow) { font-size:15px; line-height:1.7; margin-bottom:0; }
+.contact-section .button { min-height:46px; padding:12px 20px; font-size:14px; margin-top:0; }
+.contact-section .consultation-note { font-size:11px; margin-top:12px; }
+.contact-action { margin-top:24px; }
+.footer-links a { position:relative; text-decoration:none; padding-bottom:6px; }
+.footer-links a::after { content:""; position:absolute; bottom:0; left:0; width:100%; height:1px; background:currentColor; transform:scaleX(0); transform-origin:left; transition:transform .25s ease; }
+.footer-links a:hover::after,.footer-links a:focus-visible::after { transform:scaleX(1); }
+.footer-links a:hover { text-decoration:none; }
+@media(min-width:768px) {
+  .personality-collage { height:430px; }
+  .compact-contact { display:grid; grid-template-columns:minmax(0,1fr) auto; gap:40px; align-items:center; text-align:left; }
+  .contact-action { margin-top:0; text-align:center; }
+}
+@media(min-width:1024px) {
+  .full-story .story-details > div { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:30px; align-items:start; }
+  .full-story .signature { grid-column:1 / -1; }
+}
+@media(min-width:1100px) { .personality-panel h3 { height:90px; } }
+@media(max-width:767px) {
+  .editorial-hero .hero-title { font-size:clamp(23px,6.9vw,46px); }
+  .editorial-hero .title-polaroid { width:clamp(28px,7vw,45px); height:clamp(36px,8.8vw,56px); }
+  .editorial-hero .title-line { gap:.1em; }
+  .personality-collage { height:330px; }
+}
+@media(prefers-reduced-motion:reduce) { .footer-links a::after { transition:none; } }
+.recipe-flow .flow-center { font-size:18px; letter-spacing:0; }
+.recipe-mobile-visual { display:none; }
+@media(max-width:767px) {
+  .wedding-recipe .recipe-flow { display:none; }
+  .recipe-mobile-visual { display:grid; grid-template-columns:minmax(0,1fr) 18px minmax(0,1fr); gap:8px; align-items:center; text-align:center; margin-bottom:20px; }
+  .recipe-mobile-visual > div { padding:14px 5px; background:#f1e3dd; border-radius:10px; }
+  .recipe-mobile-visual > div:last-of-type { background:#e6ead9; }
+  .recipe-mobile-visual .cm-icon { width:80px; max-width:100%; height:auto; margin:0 auto 10px; color:#67513e; }
+  .recipe-mobile-visual div > span { display:block; font-size:13px; line-height:1.5; }
+  .recipe-plus { font-size:23px; }
+  .recipe-mobile-visual > p { grid-column:1 / -1; margin:8px 0 0; font-size:16px; }
+}
+
+.flip-face { padding-bottom:24px; }

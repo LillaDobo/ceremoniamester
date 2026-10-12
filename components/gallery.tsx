@@ -71,6 +71,6 @@ export function Gallery() {
       onKeyDown={event => { if (event.key === "ArrowRight" || event.key === "ArrowLeft") { event.preventDefault(); move(event.key === "ArrowRight" ? 1 : -1); } }}>
       {galleryPhotos.map((photo, index) => <figure className="gallery-slide" key={photo.id}><div className="gallery-photo"><PhotoContent photo={photo} index={index + 2} /></div><figcaption><span>{photo.caption}</span><small>{String(index + 1).padStart(2, "0")}</small></figcaption></figure>)}
     </div>
-    <div className="gallery-controls"><p>Húzzátok oldalra a képeket.</p><span className="gallery-count" aria-live="polite" aria-atomic="true">{String(active + 1).padStart(2, "0")} / {String(galleryPhotos.length).padStart(2, "0")}</span></div>
+    <div className="gallery-controls"><span className="gallery-count" aria-live="polite" aria-atomic="true">{String(active + 1).padStart(2, "0")} / {String(galleryPhotos.length).padStart(2, "0")}</span></div>
   </div>;
 }

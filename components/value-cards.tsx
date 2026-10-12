@@ -18,7 +18,7 @@ export function ValueCards() {
       <Image src={`${basePath}/images/cards/${card.file}.svg`} width={card.width} height={card.height} alt={card.name} className="personality-art" />
     </button>)}</div>
     <div id="personality-description" className={`personality-panel${selected ? " is-open" : ""}`} aria-live="polite" aria-atomic="true">
-      {selected ? <><p className="eyebrow">{selected.name}</p><h3>{selected.lead}</h3><p>{selected.text}</p><button type="button" className="personality-close" aria-label="Kártyaleírás bezárása" onClick={() => { document.querySelector<HTMLButtonElement>(`.personality-card-${active}`)?.focus(); setActive(null); }}>×</button></> : <p className="personality-hint">Három szó rólam. Kattintsatok arra, amelyikre kíváncsiak vagytok.</p>}
+      {selected ? <><p className="eyebrow">{selected.name}</p><h3>{selected.lead}</h3><p>{selected.text}</p></> : <p className="personality-hint">Három szó rólam. Kattintsatok arra, amelyikre kíváncsiak vagytok.</p>}
     </div>
   </div>;
 }
