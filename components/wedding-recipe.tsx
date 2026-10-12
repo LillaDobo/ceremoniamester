@@ -13,10 +13,10 @@ export function WeddingRecipe() {
   return <div className="wedding-recipe" data-active={active}>
     <svg className="recipe-diagram" viewBox="0 0 620 330" role="img" aria-label="A jó hangulat és a profi háttérmunka találkozásában van a ti napotok.">
       <circle className="recipe-circle recipe-circle-mood" cx="220" cy="165" r="140" fill="#ecd9d2" />
-      <circle className="recipe-circle recipe-circle-work" cx="400" cy="165" r="140" fill="#dce5d6" />
+      <circle className="recipe-circle recipe-circle-work" cx="400" cy="165" r="140" fill="#e4e8d4" />
       <path d="M310 58a140 140 0 0 1 0 214 140 140 0 0 1 0-214Z" fill="#f9f5eb" />
-      <g stroke="#6e504b" strokeWidth="3" fill="none" strokeLinecap="round" strokeLinejoin="round"><path d="m170 96 8 8 10-8 10 8 8-8m-31 23 22 0m-38-41 7 5m44-5-7 5"/><path d="M176 137c-19-19-39 9 0 29 39-20 19-48 0-29Z" /></g>
-      <g stroke="#50634b" strokeWidth="3" fill="none" strokeLinecap="round" strokeLinejoin="round"><rect x="416" y="88" width="42" height="54" rx="5"/><path d="M427 85v9m20-9v9m-31 13h42m-31 12 6 6 14-13"/></g>
+      <g stroke="#6e504b" strokeWidth="3" fill="none" strokeLinecap="round" strokeLinejoin="round"><path d="m152 153 9-40 32 31-41 9Z" fill="#d6b4a4"/><path d="m160 131 10 10m20-29 12-13m-22 11 1-14m21 36 14-2M150 103l-7-8"/><path d="M193 91c12-5 6 15 20 10"/></g>
+      <g stroke="#626f49" strokeWidth="3" fill="none" strokeLinecap="round" strokeLinejoin="round"><rect x="416" y="88" width="42" height="54" rx="5"/><path d="M427 85v9m20-9v9m-31 13h42m-31 12 6 6 14-13"/></g>
       <text x="173" y="204" textAnchor="middle" className="diagram-label">JÓ</text><text x="173" y="229" textAnchor="middle" className="diagram-label">HANGULAT</text>
       <text x="447" y="194" textAnchor="middle" className="diagram-label">PROFI</text><text x="447" y="221" textAnchor="middle" className="diagram-label">HÁTTÉR</text><text x="447" y="248" textAnchor="middle" className="diagram-label">MUNKA</text>
       <path d="M310 124c-18-20-46 9 0 36 46-27 18-56 0-36Z" fill="#bc8c7b" />

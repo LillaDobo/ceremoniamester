@@ -785,3 +785,33 @@ body { font-size:17px; }
 
 .wedding-recipe .diagram-label { font-size:26px; }
 .wedding-recipe .diagram-center { font-size:23px; }
+
+/* Stable text panels and warm, softly desaturated colour accents. */
+:root { --sage:#e7e9dd; --rose:#f1e3dd; --blue:#faf7f0; }
+.editorial-hero .hero-bottom { justify-content:center; }
+.editorial-hero .hero-bottom > p { text-align:center; }
+.about-plain { background:none; }
+.about-plain::before { display:none; }
+.about-plain .about-copy { background:transparent; padding:0; border:0; }
+.about-plain .about-mini { align-items:start; }
+.personality-panel { height:420px; display:flex; flex-direction:column; justify-content:center; }
+.personality-panel .personality-hint { max-width:30ch; }
+.story-section { align-items:start; }
+.story-placeholder { min-height:360px; }
+.story-details summary { background:#eee2d3; border-color:#c8af96; color:#684c36; }
+.drag-gallery { cursor:grab; user-select:none; }
+.drag-gallery.is-dragging { cursor:grabbing; }
+.drag-gallery img { -webkit-user-drag:none; pointer-events:none; }
+.infographic-quote::before { background-color:#e7e9dd; }
+.recipe-options button[aria-pressed="true"],.mood-buttons button[aria-pressed="true"] { background:#62694f; border-color:#62694f; }
+.recipe-detail li { background:#eceee2; }
+.cm-cards .cm-icon { width:72px; height:72px; margin-bottom:20px; color:#574333; }
+.contact-section { background:#eee5da; }
+@media(min-width:1100px) { .personality-panel { height:330px; } }
+@media(max-width:767px) {
+  .personality-panel { height:410px; }
+  .story-placeholder { display:none; }
+  .about-plain .about-copy { background:transparent; }
+}
+
+@media(max-width:1023px) { .story-placeholder { display:none; } }
