@@ -880,3 +880,68 @@ body { font-size:17px; }
 }
 
 .flip-face { padding-bottom:24px; }
+
+/* Aligned cards, compact copy and shared navigation motion. */
+.opening-photo .hero-photo { aspect-ratio:4/5; }
+.personality-panel { display:grid; height:auto; min-height:0; padding:18px; }
+.personality-description { grid-area:1 / 1; visibility:hidden; }
+.personality-description.is-active { visibility:visible; }
+.personality-panel h3 { height:auto; min-height:60px; font-size:24px; margin-bottom:12px; }
+.personality-panel p:not(.eyebrow) { font-size:15px; line-height:1.7; }
+.personality-panel .personality-hint { grid-area:1 / 1; align-self:center; margin:0; }
+.about-plain .about-mini { align-items:stretch; }
+.personality-cards { display:flex; flex-direction:column; }
+.personality-collage { width:100%; flex:1; min-height:330px; height:auto; }
+.about-copy > p:last-child,.difference-copy p:last-child { margin-bottom:0; }
+.gallery-section { padding-bottom:28px; }
+.services { padding-top:28px; }
+.flip-services { align-items:stretch; grid-auto-rows:1fr; }
+.flip-service,.flip-service:nth-child(2),.flip-service:nth-child(5) { transform:none; height:100%; min-height:0; }
+.flip-face { min-height:260px; }
+.review-card { border-style:solid; box-shadow:0 3px 0 #d8cbb9,0 12px 24px #594b3520,inset 0 1px 0 #ffffffb0; transition:transform .25s,box-shadow .25s; }
+.review-card:hover { transform:translateY(-5px); box-shadow:0 4px 0 #d8cbb9,0 18px 28px #594b352a; }
+.cm-cards article { display:flex; flex-direction:column; }
+.cm-cards .cm-icon { display:block; width:112px; height:112px; margin:0 auto 22px; flex-shrink:0; }
+.cm-cards h3 { min-height:3.6em; }
+.recipe-balanced-visual { display:grid; grid-template-columns:minmax(0,1fr) 75px minmax(0,1fr); gap:10px; align-items:center; margin-bottom:24px; }
+.recipe-ingredient { min-height:210px; padding:18px 8px; background:#f0e2db; border-radius:16px; display:flex; flex-direction:column; align-items:center; text-align:center; }
+.recipe-ingredient-work { background:#e6ead9; }
+.recipe-ingredient .cm-icon { width:112px; height:112px; color:#67513e; flex-shrink:0; margin-bottom:12px; }
+.recipe-ingredient strong { font-family:"Bodoni Moda",Georgia,serif; font-size:22px; font-weight:400; line-height:1.2; min-height:2.4em; display:flex; align-items:center; }
+.recipe-ingredient > span { font-size:12px; line-height:1.5; color:#786758; }
+.recipe-result { text-align:center; color:#795b46; }
+.recipe-result > span { display:block; font-size:32px; color:#b98e7a; margin-bottom:8px; }
+.recipe-result strong { font-size:13px; line-height:1.5; text-transform:uppercase; }
+.contact-heading { grid-column:1 / -1; text-align:center; width:100%; }
+.compact-contact { row-gap:14px; }
+.desktop-nav a,.mobile-nav a { position:relative; }
+.desktop-nav a::after,.mobile-nav a::after { content:""; position:absolute; bottom:6px; left:0; width:100%; height:1px; background:currentColor; transform:scaleX(0); transform-origin:left; transition:transform .25s ease; }
+.desktop-nav a:hover,.mobile-nav a:hover { text-decoration:none; }
+.desktop-nav a:hover::after,.desktop-nav a:focus-visible::after,.mobile-nav a:hover::after,.mobile-nav a:focus-visible::after { transform:scaleX(1); }
+.site-header .contact-link::after { transform:scaleX(0); transition:transform .25s ease; }
+.site-header .contact-link:hover::after,.site-header .contact-link:focus-visible::after { transform:scaleX(1); }
+.site-header .contact-link:hover .contact-arrow svg { animation:none; }
+@media(min-width:768px) {
+  .opening-photo .hero-photo { aspect-ratio:1.7/1; }
+  .personality-collage { min-height:390px; }
+}
+@media(max-width:767px) {
+  .personality-cards { margin-top:16px; }
+  .cm-cards h3 { min-height:0; }
+  .recipe-balanced-visual { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .recipe-result { grid-column:1 / -1; grid-row:2; display:flex; justify-content:center; align-items:center; gap:12px; }
+  .recipe-result > span { margin:0; }
+  .recipe-result strong br { display:none; }
+  .recipe-ingredient-work { grid-column:2; grid-row:1; }
+  .recipe-ingredient .cm-icon { width:90px; height:90px; }
+  .recipe-ingredient strong { font-size:20px; }
+}
+@media(prefers-reduced-motion:reduce) { .review-card,.desktop-nav a::after,.mobile-nav a::after { transition:none; } }
+@media(min-width:768px) {
+  .personality-collage { min-height:0; }
+  .personality-card { height:68%; }
+  .personality-art { height:100%; object-fit:contain; }
+  .personality-card-0 { top:5%; }
+  .personality-card-1 { top:0; }
+  .personality-card-2 { top:32%; }
+}

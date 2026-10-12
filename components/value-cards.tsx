@@ -18,7 +18,8 @@ export function ValueCards() {
       <Image src={`${basePath}/images/cards/${card.file}.svg`} width={card.width} height={card.height} alt={card.name} className="personality-art" />
     </button>)}</div>
     <div id="personality-description" className={`personality-panel${selected ? " is-open" : ""}`} aria-live="polite" aria-atomic="true">
-      {selected ? <><p className="eyebrow">{selected.name}</p><h3>{selected.lead}</h3><p>{selected.text}</p></> : <p className="personality-hint">Három szó rólam. Kattintsatok arra, amelyikre kíváncsiak vagytok.</p>}
+      {cards.map((card, index) => <div className={`personality-description${active === index ? " is-active" : ""}`} key={card.file} aria-hidden={active !== index} inert={active !== index}><p className="eyebrow">{card.name}</p><h3>{card.lead}</h3><p>{card.text}</p></div>)}
+      {!selected && <p className="personality-hint">Három szó rólam. Kattintsatok arra, amelyikre kíváncsiak vagytok.</p>}
     </div>
   </div>;
 }
