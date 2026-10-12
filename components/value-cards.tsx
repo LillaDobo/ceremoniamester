@@ -2,8 +2,8 @@ import Image from "next/image";
 
 const cards = [
   { name: "Empatikus", file: "empatikus", width: 345, height: 440, text: "Rátok figyelek. A ti elképzeléseitekből indulunk ki, hogy az esküvő tényleg rólatok szóljon." },
-  { name: "Profi", file: "profi", width: 397, height: 469, text: "A forgatókönyvtől a szolgáltatókkal való egyeztetésig összefogom a részleteket, hogy ti gondtalanul ünnepelhessetek." },
-  { name: "Laza", file: "laza", width: 384, height: 468, text: "Semmi kötelező feszengés. Fiatalos, közvetlen hangulat, és olyan programok, amelyekben jól érzitek magatokat." },
+  { name: "Profi", file: "profi", width: 397, height: 469, text: "A forgatókönyvtől a szolgáltatók összehangolásán át az esemény teljes levezényléséig gondoskodom a részletekről, hogy ti gondtalanul ünnepelhessetek." },
+  { name: "Laza", file: "laza", width: 384, height: 468, text: "Semmi sem kötelező: csináljuk úgy, ahogy ti szeretnétek. Fiatalos, közvetlen hangulatban dolgozunk együtt, a ti ötleteitekkel és a ti tempótokban." },
 ];
 
 export function ValueCards() {

@@ -8,37 +8,44 @@ import { Reviews } from "@/components/reviews";
 import { Polaroid } from "@/components/polaroid";
 import { Services } from "@/components/services";
 import { ValueCards } from "@/components/value-cards";
+import { MoodPicker } from "@/components/mood-picker";
 import { heroPhoto, titlePhotos, galleryPhotos, site } from "@/lib/site";
 
 export default function Home() {
   return <>
     <a href="#tartalom" className="skip-link">Ugrás a tartalomra</a><Header />
     <main id="tartalom">
-      <section className="hero section-shell">
-        <p className="eyebrow">Faur Richárd · Ceremóniamester</p>
-        <h1 className="hero-title" aria-label="A nagy nap, ami rólatok szól."><span className="title-line"><span>A nagy</span><Polaroid photo={titlePhotos[0]} className="polaroid-one" /><span>nap,</span></span><span className="title-line title-line-second"><span>ami</span><Polaroid photo={titlePhotos[1]} className="polaroid-two" /><span className="italic">rólatok</span><span className="title-close">szól<span className="title-dot">.</span></span></span></h1>
-        <div className="hero-bottom"><p>Ti ünnepeltek. Én összefogom a részleteket.<br />Profin a háttérben, lazán köztetek.</p><div className="hero-cta"><Link className="button button-dark" href="/kapcsolat/">Ismerjük meg egymást <Arrow /></Link><span className="consultation-note">Az első konzultáció ingyenes.</span></div></div>
-        <span className="hero-spark"><Motif kind="spark" /></span>
+      <section className="photo-hero">
+        <div className="hero-background"><PhotoContent photo={heroPhoto} priority /></div>
+        <div className="hero section-shell">
+          <p className="eyebrow">Faur Richárd · Ceremóniamester</p>
+          <h1 className="hero-title" aria-label="A nagy nap, ami rólatok szól."><span className="title-line"><span>A nagy</span><Polaroid photo={titlePhotos[0]} className="polaroid-one" /><span>nap,</span></span><span className="title-line title-line-second"><span>ami</span><Polaroid photo={titlePhotos[1]} className="polaroid-two" /><span className="italic">rólatok</span><span className="title-close">szól<span className="title-dot">.</span></span></span></h1>
+          <div className="hero-bottom"><div className="hero-message"><p>Ti ünnepeltek, én gondoskodom minden másról.<br />Profin a háttérben, lazán veletek.</p><p className="hero-vibe">A részleteket összefogom, a jó hangulathoz pedig én is hozzáteszem a magamét.</p></div><div className="hero-cta"><Link className="button button-dark" href="/kapcsolat/">Ismerjük meg egymást <Arrow /></Link><span className="consultation-note">Az első konzultáció ingyenes.</span></div></div>
+        </div>
       </section>
-      <section className="opening-photo" aria-label="Ricsi a nagy napon"><div className="hero-photo"><PhotoContent photo={heroPhoto} priority /><div className="photo-fade"><div className="section-shell"><span>{heroPhoto.caption}</span><small>Ti ketten. A szeretteitek. Egy jó nap.</small></div></div></div></section>
 
-      <section id="rolam" className="story-section section-shell section-space"><div className="story-copy"><p className="eyebrow">A mikrofon mögött</p><h2>Hogyan lettem<br /><span className="italic">ceremóniamester?</span></h2><p className="large-copy">{site.story}</p><span className="signature">Ricsi</span></div><ValueCards /></section>
+      <section className="cm-section section-shell section-space" aria-labelledby="cm-title">
+        <div className="section-heading"><div><p className="eyebrow">Miért jó, ha van mellettetek egy CM?</p><h2 id="cm-title">Egy megbízható barát<br /><span className="italic">a nagy napon.</span></h2></div><p>Ti az esküvőtökön vagytok.<br />Aznap nem kell szervezőnek lennetek.</p></div>
+        <div className="cm-cards">
+          <article><Motif kind="glass" /><h3>Mi is egy CM?</h3><p>A nap házigazdája: összeköti a párt, a vendégeket és a szolgáltatókat. Összefogja a programot, tájékoztat, és ott segít, ahol éppen szükség van rá.</p></article>
+          <article><Motif kind="spark" /><h3>Egy lépéssel a történések előtt.</h3><p>Ki szól a DJ-nek? Mikor jön a torta? Hová induljanak a vendégek? Figyelek a következő lépésre, hogy ne nektek kelljen az órát nézni és mindenkit keresni.</p></article>
+          <article><Motif kind="glass" /><h3>A jó hangulathoz is hozzáteszek.</h3><p>Ha kell, lendületet adok a társaságnak, játékot vezetek vagy összehozok egy közös nevetést. Ha egy meghitt pillanatnak van helye, annak hagyok teret.</p></article>
+        </div>
+      </section>
 
-      <section className="about-mini section-shell"><div className="about-copy"><p className="eyebrow">Pár szó rólam</p><h2>Sziasztok, Ricsi vagyok.<br /><span className="italic">Örülök nektek.</span></h2><p>{site.introduction}</p><p>{site.goal}</p><div className="difference-copy"><h3>Újhullámú esküvő.<br />A ti szabályaitok szerint.</h3><p>{site.difference}</p></div></div><figure className="about-polaroid"><div className="about-photo"><PhotoContent photo={galleryPhotos[8]} /></div><figcaption>Lazán, köztetek.</figcaption></figure></section>
+      <section id="rolam" className="about-mini section-shell"><div className="about-copy"><p className="eyebrow">Ki lesz veletek?</p><h2>Sziasztok, Ricsi vagyok.<br /><span className="italic">Örülök nektek.</span></h2><p>{site.introduction}</p><p>{site.goal}</p><div className="difference-copy"><h3>Újhullámú esküvő.<br />A ti szabályaitok szerint.</h3><p>{site.difference}</p></div></div><figure className="about-polaroid"><div className="about-photo"><PhotoContent photo={galleryPhotos[8]} /></div><figcaption>Jól szervezve. Jó társaságban.</figcaption></figure></section>
 
-      <section className="quote-section"><div className="section-shell"><Motif kind="glass" /><p className="eyebrow">Ami a felszabadultság mögött van</p><p className="quote">„Egy sikeres esküvő titka<br /><span className="italic">a profi háttérmunka.”</span></p></div></section>
-
-      <section id="galeria" className="gallery-section section-shell section-space"><div className="section-heading"><div><p className="eyebrow">Pillanatok, amik megmaradnak</p><h2>Ilyen, amikor<br /><span className="italic">együtt ünneplünk.</span></h2></div><p>Nagy nevetések. Apró gesztusok.<br />És minden, ami kettő között történik.</p></div><Gallery /></section>
-
-
-
-      <section id="szolgaltatasok" className="services section-shell section-space"><div className="section-heading"><div><p className="eyebrow">Amiben számíthattok rám</p><h2>A háttér biztos.<br /><span className="italic">A pillanat a tiétek.</span></h2></div><p>Nyissátok ki, ami érdekel.<br />A részleteket hozzátok igazítjuk.</p></div><Services /></section>
-
-      <section className="contact-section"><div className="section-shell"><p className="eyebrow">Kezdjük egy beszélgetéssel</p><h2>Nézzük meg,<br /><span className="italic">mire van szükségetek.</span></h2><p>Meséljetek az időpontról, a helyszínről és arról,<br className="desktop-break" /> hogyan képzelitek el az esküvőtöket.</p><Link className="button button-dark" href="/kapcsolat/">Kapcsolatfelvétel <Arrow /></Link><span className="consultation-note">Az első konzultáció ingyenes.</span><Motif kind="spark" className="contact-spark" /></div></section>
+      <section id="szolgaltatasok" className="services section-shell section-space"><div className="section-heading"><div><p className="eyebrow">A tervezéstől az utolsó közös programig</p><h2>Miben számíthattok<br /><span className="italic">rám?</span></h2></div><p>Fordítsátok meg a kártyákat.<br />Egérrel, kattintással vagy koppintással.</p></div><Services /></section>
 
       <section id="referenciak" className="reviews-section section-shell section-space"><p className="eyebrow">Akikkel együtt ünnepeltem</p><h2>Így élték meg<br /><span className="italic">a párok.</span></h2><Reviews /></section>
 
+      <section className="story-section section-shell section-space"><div className="story-copy"><p className="eyebrow">Hogyan lettem ceremóniamester?</p><h2>„A munka talált<br /><span className="italic">meg engem.”</span></h2><p className="story-teaser">Egy baráti felkérésből indult. Aztán rájöttem, hogy ezt nemcsak csinálni szeretem, hanem megélni is.</p><details className="story-details"><summary>Tovább a történetemhez <span aria-hidden="true">+</span></summary><div><p>{site.story}</p><span className="signature">Ricsi</span></div></details></div><ValueCards /></section>
 
+      <section className="quote-section lively-quote"><div className="section-shell quote-layout"><div className="quote-intro"><Motif kind="glass" /><p className="eyebrow">Jó kezekben. Jó hangulatban.</p><p className="quote">„A sikeres esküvő titka<br /><span className="italic">a jó hangulat és<br />a profi háttérmunka.”</span></p><p className="quote-promise">Velem mindkettőt megkapjátok.</p><p className="quote-explanation">A részletek mögött ott vagyok, a közös nevetésben pedig benne vagyok. Hogy milyen legyen a nap? Azt ti mondjátok meg.</p></div><MoodPicker /></div></section>
+
+      <section id="galeria" className="gallery-section section-shell section-space"><div className="section-heading"><div><p className="eyebrow">Pillanatok, amik megmaradnak</p><h2>Ilyen, amikor<br /><span className="italic">együtt ünneplünk.</span></h2></div><p>Nagy nevetések. Apró gesztusok.<br />És az egész nap, amit együtt élünk meg.</p></div><Gallery /></section>
+
+      <section className="final-invitation section-shell"><div className="invitation-photo"><PhotoContent photo={galleryPhotos[7]} /></div><div className="invitation-copy"><p className="eyebrow">Kezdjük egy beszélgetéssel</p><h2>Beszélgessünk<br /><span className="italic">egymással.</span></h2><p>Meséljetek magatokról és az esküvőről, amit elképzeltetek. Megnézzük, megvan-e a közös hang, és miben tudok segíteni.</p><Link className="button button-dark" href="/kapcsolat/">Nézzük meg, mire van szükségetek <Arrow /></Link><span className="consultation-note">Az első konzultáció ingyenes.</span></div></section>
     </main><Footer />
   </>;
 }
