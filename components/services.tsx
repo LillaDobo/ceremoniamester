@@ -26,7 +26,6 @@ export function Services() {
       <div className="flip-service-inner">
         <div className="flip-face flip-front" aria-hidden={flipped} inert={flipped}>
           <span className="service-icon"><ServiceIcon kind={service.icon} /></span>
-          {service.optional && <span className="optional-label">Opcionális</span>}
           <h3>{service.title}</h3><p>{service.subtitle}</p>
         </div>
         <div className="flip-face flip-back" id={`service-detail-${index}`} aria-hidden={!flipped} inert={!flipped}>
@@ -35,7 +34,7 @@ export function Services() {
       </div>
       <button type="button" className="flip-toggle" aria-expanded={flipped} aria-controls={`service-detail-${index}`} aria-label={`${service.title}: ${flipped ? "kártya visszafordítása" : "részletek"}`}
         onClick={() => { setPinned(flipped ? null : index); setHovered(null); }}>
-        <span>{flipped ? "Vissza a kártyához" : "Fordítsátok meg"}</span><span aria-hidden="true">↻</span>
+        <span className="flip-corner" aria-hidden="true">↻</span>
       </button>
     </article>;
   })}</div>;

@@ -8,8 +8,8 @@ const cards = [
 
 export function ValueCards() {
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
-  return <div className="value-cards svg-value-cards">{cards.map(card => <details className="value-card-svg" key={card.file}>
-    <summary aria-label={`${card.name} – olvass tovább`}><Image src={`${basePath}/images/cards/${card.file}.svg`} width={card.width} height={card.height} alt={`${card.name} – olvass tovább`} className="value-card-art" /></summary>
-    <p>{card.text}</p>
-  </details>)}</div>;
+  return <div className="value-cards svg-value-cards">{cards.map(card => <figure className="value-card-svg value-card-static" key={card.file}>
+    <Image src={`${basePath}/images/cards/${card.file}.svg`} width={card.width} height={card.height} alt={card.name} className="value-card-art" />
+    <figcaption>{card.text}</figcaption>
+  </figure>)}</div>;
 }
