@@ -6,6 +6,10 @@ export const site = {
   goal: "A célom nemcsak az, hogy a párnak a nagy napon semmi dolga ne legyen, hanem az is, hogy az egész napot számukra és minden vendégük számára a lehető legjobb módon, gondtalanul megtervezzük – akár közösen –, én pedig levezessem.",
   difference: "Az újhullámú, fiatalos esküvőket képviselem. Eddigi esküvőim során azt tapasztaltam, hogy a manapság házasodó párok szeretnék, ha ez a nap tényleg róluk szólna, és úgy alakíthatnák, ahogy nekik a legjobb. Én ebben segítek megoldást találni, majd profin levezetem a napot.",
   story: "Rendezvényszervezői múltam és magabiztos kiállásom miatt egy közeli barátom felkért, hogy vezessem le az esküvőjüket. Ekkor éreztem meg, mennyire szeretem ezt: összefogni a részleteket, együtt nevetni a vendégekkel, és látni, ahogy a pár felszabadultan élvezi a napját. A munka talált meg engem – én pedig beleszerettem.",
+  storyContinuation: [
+    "Az első felkérésben az volt a legjobb, hogy olyan emberek napjához tehettem hozzá, akik fontosak nekem. A rendezvényszervezésből hozott tapasztalat adott egy biztos alapot, az esküvő pedig megmutatta, mennyit számít a személyes figyelem és egy jókor érkező mondat.",
+    "Ma is ezt keresem minden esküvőben: a pillanatot, amikor a tervből valódi élmény lesz. Amikor a vendégek együtt nevetnek, a párnak pedig már nem az jár a fejében, mi következik, hanem egyszerűen jól érzi magát. Nekem ebben találkozik a szakmai rész és az, amiért igazán szeretem ezt a munkát.",
+  ],
 };
 
 export type Photo = { id: string; src: string; alt: string; caption: string; position?: string };

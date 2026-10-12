@@ -699,3 +699,89 @@ body { font-size:17px; }
   .value-card-static { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.2fr); align-items:center; gap:12px; }
   .value-card-static figcaption { font-size:15px; padding:12px; }
 }
+
+/* Compact navigation and a larger, uppercase editorial opening. */
+:root { --sage:#e2e8dc; --rose:#f0e4df; --blue:#f5f1e9; }
+.site-header { min-height:74px; }
+.header-brand { font-size:25px; }
+.header-contact { min-height:42px; font-size:12px; }
+.desktop-nav { font-size:13px; }
+.editorial-hero { padding-block:65px 50px; }
+.editorial-hero .hero-title { text-transform:uppercase; font-size:clamp(36px,9.6vw,180px); letter-spacing:-.045em; line-height:1; margin-bottom:40px; }
+.editorial-hero .title-line { gap:.15em; }
+.editorial-hero .title-line + .title-line { margin-top:.12em; }
+.pointing-word { position:relative; isolation:isolate; display:inline-block; width:clamp(190px,43vw,780px); height:clamp(100px,20vw,340px); margin:.04em 0; }
+.pointing-picture { position:absolute; inset:0; z-index:-1; overflow:hidden; border-radius:8px; transform:rotate(2deg); box-shadow:0 8px 22px #322e291c; }
+.pointing-picture::after { content:""; position:absolute; inset:0; background:linear-gradient(180deg,#262c2b55,transparent 70%); }
+.pointing-label { position:absolute; top:8%; right:5%; color:#fff9ef; font-size:clamp(27px,4.8vw,88px); letter-spacing:-.035em; text-shadow:0 2px 9px #0008; }
+.editorial-hero .title-last-line { margin-top:0; }
+.editorial-hero .hero-bottom p { max-width:38ch; font-size:18px; line-height:1.8; }
+.about-background-section .about-mini { display:grid; grid-template-columns:1fr; gap:25px; align-items:center; }
+.about-background-section .about-copy { max-width:none; }
+.personality-cards { position:relative; min-width:0; }
+.personality-collage { position:relative; height:360px; max-width:550px; margin-inline:auto; }
+.personality-card { position:absolute; padding:0; border:0; background:transparent; cursor:pointer; width:43%; transition:transform .2s,filter .2s; }
+.personality-card-0 { top:20px; left:0; z-index:2; }
+.personality-card-1 { top:-35px; right:0; z-index:1; }
+.personality-card-2 { top:140px; left:32%; z-index:3; }
+.personality-card:hover,.personality-card.is-selected { transform:translateY(-8px); filter:drop-shadow(0 6px 5px #322e2920); z-index:4; }
+.personality-art { display:block; width:100%; height:auto; }
+.personality-panel { position:relative; max-width:550px; margin:25px auto 0; padding:22px; background:#faf7f0ed; border:1px solid #e3d9cb; border-radius:12px; }
+.personality-panel .eyebrow { margin-bottom:10px; color:#705e50; }
+.personality-panel h3 { font-family:"Bodoni Moda",Georgia,serif; font-weight:400; font-size:27px; line-height:1.2; margin-bottom:15px; padding-right:18px; }
+.personality-panel p:not(.eyebrow) { font-size:16px; line-height:1.8; margin-bottom:0; }
+.personality-hint { color:#756657; }
+.personality-close { position:absolute; right:10px; top:10px; width:36px; height:36px; font-size:25px; border:0; background:transparent; cursor:pointer; }
+.story-opening { margin:25px 0 30px; font-family:"Bodoni Moda",Georgia,serif; font-size:clamp(26px,2.4vw,36px); font-style:italic; line-height:1.4; padding-left:22px; border-left:3px solid #cfb0a5; }
+.story-memory { margin:0; padding:12px 12px 0; background:#f7f2e9; border:1px solid #e1d7c8; border-radius:6px; transform:rotate(-2deg); }
+.story-memory-photo { position:relative; aspect-ratio:4/3; overflow:hidden; }
+.story-memory figcaption { font-family:"Bodoni Moda",Georgia,serif; font-size:21px; font-style:italic; text-align:center; padding:20px 12px; }
+.infographic-quote::before { background-color:#e2e8dc; }
+.wedding-recipe { border:1px solid #d7dcce; border-radius:18px; background:#faf7f0; padding:20px; text-align:left; }
+.recipe-diagram { display:block; width:100%; height:auto; }
+.diagram-label { font-family:"Manrope",Arial,sans-serif; font-size:18px; font-weight:500; fill:#4b443b; }
+.diagram-center { font-family:"Manrope",Arial,sans-serif; font-size:17px; font-weight:600; fill:#755447; }
+.recipe-circle { transition:opacity .25s; }
+.wedding-recipe[data-active="0"] .recipe-circle-work,.wedding-recipe[data-active="1"] .recipe-circle-mood { opacity:.55; }
+.recipe-options { display:flex; flex-wrap:wrap; gap:10px; margin:8px 0 22px; }
+.recipe-options button { min-height:44px; padding:11px 16px; font-size:14px; border:1px solid #c3cbb9; border-radius:30px; background:transparent; cursor:pointer; }
+.recipe-options button[aria-pressed="true"] { background:#465340; border-color:#465340; color:#fffaf1; }
+.recipe-detail h3 { font-family:"Bodoni Moda",Georgia,serif; font-size:27px; line-height:1.25; font-weight:400; margin-bottom:13px; }
+.recipe-detail p { font-size:16px; line-height:1.8; margin-bottom:18px; }
+.recipe-detail ul { display:flex; flex-wrap:wrap; gap:8px; padding:0; margin:0; list-style:none; }
+.recipe-detail li { font-size:12px; line-height:1.5; padding:7px 10px; background:#e9ede2; border-radius:6px; }
+.wedding-recipe[data-active="0"] .recipe-detail li { background:#f0e3dc; }
+.flip-face,.cm-cards article { background:var(--sage); }
+.flip-service-1 .flip-face,.cm-cards article:nth-child(2) { background:var(--rose); }
+.flip-service-2 .flip-face,.cm-cards article:nth-child(3) { background:#faf7f0; }
+.review-card { background:var(--sage); border-color:#ced6c8; }
+.review-card:nth-child(2) { background:var(--rose); border-color:#e0ccc3; }
+.review-card:nth-child(3n) { background:#faf7f0; }
+@media(min-width:768px) {
+  .site-header { min-height:82px; }
+  .header-brand { font-size:28px; }
+  .about-background-section .about-mini { grid-template-columns:minmax(0,1.2fr) minmax(0,1fr); gap:45px; }
+  .personality-collage { height:390px; }
+  .personality-card-1 { top:-55px; }
+  .wedding-recipe { padding:26px; }
+}
+@media(max-width:767px) {
+  .editorial-hero .hero-title { font-size:clamp(34px,9vw,69px); }
+  .editorial-hero .title-polaroid { width:clamp(43px,9vw,64px); height:clamp(54px,11.5vw,80px); }
+  .editorial-hero .title-line { gap:.12em; }
+  .pointing-word { width:clamp(190px,58vw,380px); height:clamp(115px,31vw,200px); }
+  .pointing-label { font-size:clamp(27px,7vw,45px); }
+  .personality-cards { margin-top:40px; }
+  .personality-collage { height:360px; max-width:400px; }
+  .personality-card { width:44%; }
+  .personality-card-2 { top:140px; }
+  .story-memory { margin-top:10px; }
+  .recipe-detail h3 { font-size:25px; }
+}
+@media(prefers-reduced-motion:reduce) { .personality-card,.recipe-circle { transition:none; } }
+.wedding-recipe .recipe-diagram { width:100%; height:auto; margin:0 0 8px; }
+.personality-panel { z-index:5; }
+@media(min-width:768px) { .personality-collage { height:460px; } }
+
+.wedding-recipe .diagram-label { font-size:26px; }
+.wedding-recipe .diagram-center { font-size:23px; }
