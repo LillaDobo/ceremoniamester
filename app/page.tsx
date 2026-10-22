@@ -38,7 +38,7 @@ export default function Home() {
       <section id="referenciak" className="reviews-section section-shell section-space"><p className="eyebrow">Akikkel együtt ünnepeltem</p><h2>Így élték meg<br /><span className="italic">a párok.</span></h2><Reviews /></section>
 
       <section className="cm-section section-shell section-space" aria-labelledby="cm-title">
-        <div className="section-heading"><div><p className="eyebrow">Miért jó, ha van mellettetek egy CM?</p><h2 id="cm-title">Egy megbízható barát<br /><span className="italic">a nagy napon.</span></h2></div><p>Ti az esküvőtökön vagytok.<br />Aznap nem kell szervezőnek lennetek.</p></div>
+        <div className="section-heading"><div><p className="eyebrow">Miért jó, ha van mellettetek egy CM?</p><PhotoCaption className="heading-reveal"><h2 id="cm-title">Egy megbízható barát<br /><span className="italic">a nagy napon.</span></h2></PhotoCaption></div><p>Ti az esküvőtökön vagytok.<br />Aznap nem kell szervezőnek lennetek.</p></div>
         <div className="cm-cards">
           <article><CmIcon kind="host" /><h3>Mi is az a ceremóniamester?</h3><p>A nap házigazdája: összeköti a párt, a vendégeket és a szolgáltatókat. Összefogja a programot, tájékoztat, és ott segít, ahol éppen szükség van rá.</p></article>
           <article><CmIcon kind="plan" /><h3>Egy lépéssel a történések előtt.</h3><p>Ki szól a DJ-nek? Mikor jön a torta? Hová induljanak a vendégek? Figyelek a következő lépésre, hogy ne nektek kelljen az órát nézni és mindenkit keresni.</p></article>

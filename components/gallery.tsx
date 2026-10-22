@@ -7,14 +7,11 @@ import { PhotoContent } from "./photo";
 export function Gallery() {
   const track = useRef<HTMLDivElement>(null);
   const dialog = useRef<HTMLDialogElement>(null);
-  const viewport = useRef<HTMLDivElement>(null);
   const drag = useRef<{ pointer: number; x: number; scroll: number } | null>(null);
-  const pan = useRef<{ x: number; y: number; left: number; top: number } | null>(null);
   const suppressClick = useRef(false);
   const [active, setActive] = useState(0);
   const [dragging, setDragging] = useState(false);
   const [opened, setOpened] = useState<number | null>(null);
-  const [zoom, setZoom] = useState(1);
   const [photoRatio, setPhotoRatio] = useState(1.5);
   const [reducedMotion, setReducedMotion] = useState(false);
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
@@ -37,7 +34,7 @@ export function Gallery() {
 
   function openPhoto(index: number) {
     if (suppressClick.current) return;
-    setZoom(1); setOpened(index);
+    setOpened(index);
   }
 
   function syncPosition() {
@@ -92,20 +89,16 @@ export function Gallery() {
         if (suppressClick.current) event.currentTarget.scrollLeft = current.scroll - (event.clientX - current.x);
       }}
       onPointerUp={finishDrag} onPointerCancel={finishDrag} onLostPointerCapture={finishDrag}
-      role="region" aria-roledescription="képgaléria" aria-label="Esküvői képek; húzható, nyílbillentyűkkel lapozható, kattintással nagyítható" tabIndex={0}
+      role="region" aria-roledescription="képgaléria" aria-label="Esküvői képek; húzható, nyílbillentyűkkel lapozható, kattintással megnyitható" tabIndex={0}
       onKeyDown={event => { if (event.key === "ArrowRight" || event.key === "ArrowLeft") { event.preventDefault(); move(event.key === "ArrowRight" ? 1 : -1); } }}>
       {galleryPhotos.map((photo, index) => <figure className="gallery-slide" key={photo.id}><button type="button" className="gallery-photo gallery-open" aria-label={`${photo.alt} – megnyitás nagyban`} onClick={event => { if (event.detail === 0) suppressClick.current = false; openPhoto(index); }}><PhotoContent photo={photo} index={index + 2} /></button></figure>)}
     </div>
     <div className="gallery-controls"><span className="gallery-count" aria-live="polite" aria-atomic="true">{String(active + 1).padStart(2, "0")} / {String(galleryPhotos.length).padStart(2, "0")}</span></div>
-    {opened !== null && <dialog ref={dialog} className="gallery-lightbox" style={{ width: `min(98vw, ${96 * photoRatio}dvh)`, height: `min(96dvh, ${98 / photoRatio}vw)` }} aria-label="Nagyítható esküvői kép" onCancel={() => setOpened(null)} onClick={event => { if (event.target === event.currentTarget) setOpened(null); }}>
-      <div className="lightbox-toolbar" role="group" aria-label="Kép nagyítása"><button type="button" aria-label="Kicsinyítés" disabled={zoom <= 1} onClick={() => setZoom(value => Math.max(1, value - .5))}>−</button><button type="button" aria-label="Nagyítás" disabled={zoom >= 3} onClick={() => setZoom(value => Math.min(3, value + .5))}>+</button></div>
+    {opened !== null && <dialog ref={dialog} className="gallery-lightbox" style={{ width: `min(98vw, ${96 * photoRatio}dvh)`, height: `min(96dvh, ${98 / photoRatio}vw)` }} aria-label="Esküvői kép nagy nézetben" onCancel={() => setOpened(null)} onClick={event => { if (event.target === event.currentTarget) setOpened(null); }}>
       <button type="button" className="lightbox-close" autoFocus aria-label="Kép bezárása" onClick={() => setOpened(null)}>×</button>
-      <div ref={viewport} className={`lightbox-viewport${zoom > 1 ? " is-zoomed" : ""}`} onDoubleClick={() => setZoom(value => value === 1 ? 2 : 1)}
-        onPointerDown={event => { if (zoom <= 1 || event.pointerType !== "mouse" || event.button !== 0) return; pan.current = { x: event.clientX, y: event.clientY, left: event.currentTarget.scrollLeft, top: event.currentTarget.scrollTop }; event.currentTarget.setPointerCapture(event.pointerId); }}
-        onPointerMove={event => { if (!pan.current) return; event.currentTarget.scrollLeft = pan.current.left - event.clientX + pan.current.x; event.currentTarget.scrollTop = pan.current.top - event.clientY + pan.current.y; }}
-        onPointerUp={event => { pan.current = null; if (event.currentTarget.hasPointerCapture(event.pointerId)) event.currentTarget.releasePointerCapture(event.pointerId); }} onPointerCancel={() => { pan.current = null; }} onLostPointerCapture={() => { pan.current = null; }}>
-        <div className="lightbox-image-canvas" style={{ width: `${zoom * 100}%`, height: `${zoom * 100}%` }}>
-          {/* Native img keeps the full-resolution photograph available at every zoom level. */}
+      <div className="lightbox-viewport">
+        <div className="lightbox-image-canvas">
+          {/* Show the full photograph fitted to the available viewport. */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={galleryPhotos[opened].src.startsWith("/") ? `${basePath}${galleryPhotos[opened].src}` : galleryPhotos[opened].src} alt={galleryPhotos[opened].alt} draggable={false} onLoad={event => { const image = event.currentTarget; if (image.naturalWidth && image.naturalHeight) setPhotoRatio(image.naturalWidth / image.naturalHeight); }} />
         </div>
