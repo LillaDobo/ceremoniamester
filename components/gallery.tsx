@@ -15,6 +15,7 @@ export function Gallery() {
   const [dragging, setDragging] = useState(false);
   const [opened, setOpened] = useState<number | null>(null);
   const [zoom, setZoom] = useState(1);
+  const [photoRatio, setPhotoRatio] = useState(1.5);
   const [reducedMotion, setReducedMotion] = useState(false);
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
@@ -96,8 +97,9 @@ export function Gallery() {
       {galleryPhotos.map((photo, index) => <figure className="gallery-slide" key={photo.id}><button type="button" className="gallery-photo gallery-open" aria-label={`${photo.alt} – megnyitás nagyban`} onClick={event => { if (event.detail === 0) suppressClick.current = false; openPhoto(index); }}><PhotoContent photo={photo} index={index + 2} /></button></figure>)}
     </div>
     <div className="gallery-controls"><span className="gallery-count" aria-live="polite" aria-atomic="true">{String(active + 1).padStart(2, "0")} / {String(galleryPhotos.length).padStart(2, "0")}</span></div>
-    {opened !== null && <dialog ref={dialog} className="gallery-lightbox" aria-label="Nagyítható esküvői kép" onCancel={() => setOpened(null)} onClick={event => { if (event.target === event.currentTarget) setOpened(null); }}>
-      <div className="lightbox-toolbar"><div role="group" aria-label="Kép nagyítása"><button type="button" aria-label="Kicsinyítés" disabled={zoom <= 1} onClick={() => setZoom(value => Math.max(1, value - .5))}>−</button><button type="button" aria-label="Eredeti nézet" onClick={() => { setZoom(1); viewport.current?.scrollTo(0, 0); }}>{Math.round(zoom * 100)}%</button><button type="button" aria-label="Nagyítás" disabled={zoom >= 3} onClick={() => setZoom(value => Math.min(3, value + .5))}>+</button></div><button type="button" autoFocus aria-label="Kép bezárása" onClick={() => setOpened(null)}>×</button></div>
+    {opened !== null && <dialog ref={dialog} className="gallery-lightbox" style={{ width: `min(98vw, ${96 * photoRatio}dvh)`, height: `min(96dvh, ${98 / photoRatio}vw)` }} aria-label="Nagyítható esküvői kép" onCancel={() => setOpened(null)} onClick={event => { if (event.target === event.currentTarget) setOpened(null); }}>
+      <div className="lightbox-toolbar" role="group" aria-label="Kép nagyítása"><button type="button" aria-label="Kicsinyítés" disabled={zoom <= 1} onClick={() => setZoom(value => Math.max(1, value - .5))}>−</button><button type="button" aria-label="Nagyítás" disabled={zoom >= 3} onClick={() => setZoom(value => Math.min(3, value + .5))}>+</button></div>
+      <button type="button" className="lightbox-close" autoFocus aria-label="Kép bezárása" onClick={() => setOpened(null)}>×</button>
       <div ref={viewport} className={`lightbox-viewport${zoom > 1 ? " is-zoomed" : ""}`} onDoubleClick={() => setZoom(value => value === 1 ? 2 : 1)}
         onPointerDown={event => { if (zoom <= 1 || event.pointerType !== "mouse" || event.button !== 0) return; pan.current = { x: event.clientX, y: event.clientY, left: event.currentTarget.scrollLeft, top: event.currentTarget.scrollTop }; event.currentTarget.setPointerCapture(event.pointerId); }}
         onPointerMove={event => { if (!pan.current) return; event.currentTarget.scrollLeft = pan.current.left - event.clientX + pan.current.x; event.currentTarget.scrollTop = pan.current.top - event.clientY + pan.current.y; }}
@@ -105,7 +107,7 @@ export function Gallery() {
         <div className="lightbox-image-canvas" style={{ width: `${zoom * 100}%`, height: `${zoom * 100}%` }}>
           {/* Native img keeps the full-resolution photograph available at every zoom level. */}
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={galleryPhotos[opened].src.startsWith("/") ? `${basePath}${galleryPhotos[opened].src}` : galleryPhotos[opened].src} alt={galleryPhotos[opened].alt} draggable={false} />
+          <img src={galleryPhotos[opened].src.startsWith("/") ? `${basePath}${galleryPhotos[opened].src}` : galleryPhotos[opened].src} alt={galleryPhotos[opened].alt} draggable={false} onLoad={event => { const image = event.currentTarget; if (image.naturalWidth && image.naturalHeight) setPhotoRatio(image.naturalWidth / image.naturalHeight); }} />
         </div>
       </div>
     </dialog>}

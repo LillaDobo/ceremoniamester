@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { services } from "@/lib/site";
 
 function ServiceIcon({ kind }: { kind: string }) {
@@ -16,9 +16,18 @@ function ServiceIcon({ kind }: { kind: string }) {
 }
 
 export function Services() {
+  const grid = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const element = grid.current;
+    if (!element || !("IntersectionObserver" in window) || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const observer = new IntersectionObserver(entries => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add("is-revealed"); observer.unobserve(entry.target); } }); }, { threshold: .12 });
+    element.classList.add("reveal-ready");
+    Array.from(element.children).forEach(card => observer.observe(card));
+    return () => { observer.disconnect(); element.classList.remove("reveal-ready"); };
+  }, []);
   const [pinned, setPinned] = useState<number | null>(null);
   const [hovered, setHovered] = useState<number | null>(null);
-  return <div className="flip-services">{services.map((service, index) => {
+  return <div className="flip-services" ref={grid}>{services.map((service, index) => {
     const flipped = pinned === index || hovered === index;
     return <article className={`flip-service flip-service-${index % 3}${flipped ? " is-flipped" : ""}`} key={service.title}
       onPointerEnter={event => { if (event.pointerType === "mouse") setHovered(index); }}

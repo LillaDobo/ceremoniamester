@@ -996,3 +996,32 @@ body { font-size:17px; }
   .personality-back strong { font-size:25px; }
   .personality-back > span:last-child { font-size:15px; line-height:1.6; }
 }
+
+/* Both personality faces use the original SVG's exact outline and paper colour. */
+.inline-personalities .personality-card .personality-back { padding:0; border:0; border-radius:0; background:transparent; box-shadow:none; }
+.personality-back-art { display:block; width:100%; height:100%; }
+.personality-back-copy { font-family:"Manrope",Arial,sans-serif; color:var(--ink); }
+.personality-back-copy .eyebrow { display:block; font-size:12px; margin-bottom:18px; }
+.personality-back-copy strong { display:block; font-family:"Bodoni Moda",Georgia,serif; font-weight:400; font-size:25px; line-height:1.2; margin-bottom:18px; }
+.personality-back-copy > span:last-child { display:block; font-size:16px; line-height:1.65; }
+.parallax-backdrop { inset:-90px 0; will-change:transform; }
+.photographic-quote .quote-intro { margin-inline:auto; text-align:center; }
+.photographic-quote .quote { margin-inline:auto; }
+.quote-placeholder-photo::after { background:#201d1999; }
+.gallery-lightbox { width:98vw; max-width:none; height:96dvh; background:transparent; border-radius:0; }
+.lightbox-viewport { height:100%; }
+.lightbox-close { position:absolute; top:12px; right:12px; z-index:3; width:36px; height:36px; padding:0; display:grid; place-items:center; border:1px solid #ffffff66; border-radius:50%; background:#24211ebf; color:#fffaf2; font-size:25px; line-height:1; cursor:pointer; transition:background .2s,color .2s; }
+.lightbox-close:hover,.lightbox-close:focus-visible { background:#f1d2c6; color:#573e32; }
+.lightbox-toolbar { position:absolute; bottom:14px; left:50%; transform:translateX(-50%); z-index:3; height:auto; padding:5px; gap:5px; border-radius:30px; background:#24211ebf; }
+.lightbox-toolbar button { min-width:34px; min-height:34px; padding:4px 8px; border:0; font-size:20px; }
+.services { overflow-x:clip; }
+.flip-services.reveal-ready .flip-service { opacity:0; transform:translateX(-70px); transition:opacity .7s ease,transform .7s cubic-bezier(.2,.75,.25,1); }
+.flip-services.reveal-ready .flip-service:nth-child(even) { transform:translateX(70px); }
+.flip-services.reveal-ready .flip-service.is-revealed,.flip-services.reveal-ready .flip-service:focus-within { opacity:1; transform:translateX(0); }
+html { scroll-behavior:smooth; }
+@media(prefers-reduced-motion:reduce) {
+  html { scroll-behavior:auto; }
+  .parallax-backdrop { will-change:auto; transform:none!important; }
+  .flip-services.reveal-ready .flip-service { opacity:1; transform:none; transition:none; }
+  .lightbox-close { transition:none; }
+}
