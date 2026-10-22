@@ -10,16 +10,18 @@ const cards = [
 ];
 
 export function ValueCards() {
-  const [active, setActive] = useState<number | null>(null);
+  const [backs, setBacks] = useState<boolean[]>([false, false, false]);
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
-  const selected = active === null ? null : cards[active];
-  return <div className="personality-cards">
-    <div className="personality-collage">{cards.map((card, index) => <button type="button" className={`personality-card personality-card-${index}${active === index ? " is-selected" : ""}`} key={card.file} aria-expanded={active === index} aria-controls="personality-description" aria-label={`${card.name}: ${active === index ? "leírás bezárása" : "részletek"}`} onClick={() => setActive(active === index ? null : index)}>
-      <Image src={`${basePath}/images/cards/${card.file}.svg`} width={card.width} height={card.height} alt={card.name} className="personality-art" />
-    </button>)}</div>
-    <div id="personality-description" className={`personality-panel${selected ? " is-open" : ""}`} aria-live="polite" aria-atomic="true">
-      {cards.map((card, index) => <div className={`personality-description${active === index ? " is-active" : ""}`} key={card.file} aria-hidden={active !== index} inert={active !== index}><p className="eyebrow">{card.name}</p><h3>{card.lead}</h3><p>{card.text}</p></div>)}
-      {!selected && <p className="personality-hint">Három szó rólam. Kattintsatok arra, amelyikre kíváncsiak vagytok.</p>}
-    </div>
-  </div>;
+  const toggle = (index: number) => setBacks(previous => previous.map((back, i) => i === index ? !back : back));
+  return <div className="personality-cards inline-personalities"><div className="personality-collage">
+    {cards.map((card, index) => <button type="button" key={card.file}
+      className={`personality-card personality-card-${index}${backs[index] ? " shows-back" : ""}`}
+      aria-label={`${card.name}: ${backs[index] ? "előlap megjelenítése" : "részletek megjelenítése"}`}
+      aria-expanded={backs[index]} aria-controls={`personality-back-${index}`}
+      onPointerEnter={event => { if (event.pointerType === "mouse") toggle(index); }}
+      onClick={event => { if (event.detail === 0 || !window.matchMedia("(hover: hover) and (pointer: fine)").matches) toggle(index); }}>
+      <span className="personality-front" aria-hidden={backs[index]}><Image src={`${basePath}/images/cards/${card.file}.svg`} width={card.width} height={card.height} alt={card.name} className="personality-art" /></span>
+      <span className="personality-back" id={`personality-back-${index}`} aria-hidden={!backs[index]}><span className="eyebrow">{card.name}</span><strong>{card.lead}</strong><span>{card.text}</span></span>
+    </button>)}
+  </div></div>;
 }

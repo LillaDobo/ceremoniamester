@@ -945,3 +945,54 @@ body { font-size:17px; }
   .personality-card-1 { top:0; }
   .personality-card-2 { top:32%; }
 }
+
+/* Small typography adjustments leave the independently sized polaroids intact. */
+.editorial-hero .hero-title { font-size:clamp(28px,6.6vw,124px); }
+.eyebrow { font-size:13px; }
+.photo-fade small { font-size:11px; }
+.inline-personalities .personality-collage { flex:none; min-height:820px; height:820px; max-width:640px; }
+.inline-personalities .personality-card { width:68%; max-width:380px; min-height:420px; height:auto; aspect-ratio:4/5; transition:none; filter:none; transform:none; text-align:left; }
+.inline-personalities .personality-card-0 { top:0; left:0; right:auto; }
+.inline-personalities .personality-card-1 { top:170px; right:0; left:auto; }
+.inline-personalities .personality-card-2 { top:340px; left:8%; right:auto; }
+.inline-personalities .personality-card:hover,.inline-personalities .personality-card:focus-visible { z-index:6; transform:none; }
+.inline-personalities .personality-front,.inline-personalities .personality-back { display:block; position:absolute; inset:0; }
+.inline-personalities .personality-art { width:100%; height:100%; object-fit:fill; }
+.inline-personalities .personality-back { visibility:hidden; padding:clamp(22px,3vw,36px); background:#f5ede1; border:1px solid #c6b49e; border-radius:12px; box-shadow:0 8px 25px #322e291a; }
+.inline-personalities .personality-card-1 .personality-back { background:#e7e9dd; }
+.inline-personalities .personality-card-2 .personality-back { background:#f1e3dd; }
+.inline-personalities .shows-back .personality-back { visibility:visible; }
+.inline-personalities .shows-back .personality-front { visibility:hidden; }
+.personality-back .eyebrow { display:block; margin-bottom:18px; }
+.personality-back strong { display:block; font-family:"Bodoni Moda",Georgia,serif; font-size:clamp(24px,2.3vw,30px); font-weight:400; line-height:1.2; margin-bottom:18px; }
+.personality-back > span:last-child { display:block; font-size:15px; line-height:1.7; }
+.photographic-quote { position:relative; isolation:isolate; overflow:hidden; color:#fffaf2; background:#655749; }
+.photographic-quote::before { display:none; }
+.quote-placeholder-photo { position:absolute; inset:0; z-index:-2; }
+.quote-placeholder-photo::after { content:""; position:absolute; inset:0; background:linear-gradient(90deg,#201d19d9,#201d1970); }
+.photographic-quote .quote-layout { display:block; }
+.photographic-quote .quote-intro { max-width:1000px; }
+.photographic-quote .quote,.photographic-quote .eyebrow,.photographic-quote .quote-promise { color:inherit; }
+.gallery-open { display:block; width:100%; padding:0; border:0; background:transparent; cursor:zoom-in; }
+.gallery-slide { margin:0; }
+.gallery-lightbox { position:fixed; inset:0; margin:auto; width:96vw; max-width:1600px; height:92dvh; max-height:100dvh; padding:0; border:0; border-radius:12px; background:#24211e; color:#fffaf2; overflow:hidden; }
+.gallery-lightbox::backdrop { background:#191714e8; }
+.lightbox-toolbar { height:64px; display:flex; align-items:center; justify-content:space-between; padding:8px 16px; gap:16px; }
+.lightbox-toolbar > div { display:flex; align-items:center; gap:8px; }
+.lightbox-toolbar button { min-width:44px; min-height:44px; padding:8px 12px; border:1px solid #fff5; border-radius:6px; background:transparent; color:inherit; cursor:pointer; font-size:19px; }
+.lightbox-toolbar button:disabled { opacity:.35; cursor:default; }
+.lightbox-toolbar > button { font-size:28px; }
+.lightbox-viewport { width:100%; height:calc(100% - 64px); overflow:auto; overscroll-behavior:contain; }
+.lightbox-viewport.is-zoomed { cursor:grab; }
+.lightbox-viewport.is-zoomed:active { cursor:grabbing; }
+.lightbox-image-canvas { display:flex; align-items:center; justify-content:center; }
+.lightbox-image-canvas img { display:block; width:100%; height:100%; object-fit:contain; max-width:none; user-select:none; }
+@media(max-width:767px) {
+  .editorial-hero .hero-title { font-size:clamp(22px,6.5vw,44px); }
+  .inline-personalities .personality-collage { height:880px; min-height:880px; max-width:500px; }
+  .inline-personalities .personality-card { width:82%; max-width:350px; min-height:430px; }
+  .inline-personalities .personality-card-1 { top:210px; }
+  .inline-personalities .personality-card-2 { top:420px; left:3%; }
+  .personality-back strong { font-size:25px; }
+  .personality-back > span:last-child { font-size:15px; line-height:1.6; }
+}

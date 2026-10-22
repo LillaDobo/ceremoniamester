@@ -9,8 +9,6 @@ import { Reviews } from "@/components/reviews";
 import { Polaroid } from "@/components/polaroid";
 import { Services } from "@/components/services";
 import { ValueCards } from "@/components/value-cards";
-import { WeddingRecipe } from "@/components/wedding-recipe";
-import { MoodPicker } from "@/components/mood-picker";
 import { heroPhoto, titlePhotos, galleryPhotos, site } from "@/lib/site";
 
 export default function Home() {
@@ -29,7 +27,7 @@ export default function Home() {
 
       <section className="story-section full-story section-space"><div className="story-copy section-shell"><p className="eyebrow">Egy baráti felkérésből indult</p><h2>Hogyan lettem <span className="italic">ceremóniamester?</span></h2><blockquote className="story-opening">„A munka talált meg engem.”</blockquote><details className="story-details"><summary>Tovább a teljes történethez <span aria-hidden="true">+</span></summary><div><p>{site.story}</p>{site.storyContinuation.map(paragraph => <p key={paragraph}>{paragraph}</p>)}<span className="signature">Ricsi</span></div></details></div></section>
 
-      <section className="quote-section lively-quote infographic-quote"><div className="section-shell quote-layout"><div className="quote-intro"><p className="eyebrow">Jó kezekben. Jó hangulatban.</p><p className="quote">„A sikeres esküvő titka<br /><span className="italic">a jó hangulat és<br />a profi háttérmunka.”</span></p><p className="quote-promise">Velem mindkettőt megkapjátok.</p><p className="quote-explanation">Két dolog, ami együtt működik igazán. Nézzétek meg, mit teszek hozzá az egyikhez és a másikhoz.</p></div><WeddingRecipe /></div></section>
+      <section className="quote-section lively-quote photographic-quote"><div className="quote-placeholder-photo" aria-hidden="true"><PhotoContent photo={galleryPhotos[8]} /></div><div className="section-shell quote-layout"><div className="quote-intro"><p className="eyebrow">Jó kezekben. Jó hangulatban.</p><p className="quote">„A sikeres esküvő titka<br /><span className="italic">a jó hangulat és<br />a profi háttérmunka.”</span></p><p className="quote-promise">Velem mindkettőt megkapjátok.</p></div></div></section>
 
       <section id="galeria" className="gallery-section section-shell section-space"><div className="section-heading"><div><p className="eyebrow">Pillanatok, amik megmaradnak</p><h2>Ilyen, amikor<br /><span className="italic">együtt ünneplünk.</span></h2></div><p>A jó hangulat nem kötelező programokból születik. Figyelek a társaságra, és akkor adok lendületet, amikor jól esik.</p></div><Gallery /></section>
 
@@ -46,7 +44,6 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="new-mood-section section-shell section-space"><div className="section-heading"><div><p className="eyebrow">A ti napotok, a ti hangulatotok</p><h2>Mi áll közel<br /><span className="italic">hozzátok?</span></h2></div><p>A részleteket kézben tartom, a közös nevetésekhez pedig én is adok lendületet.</p></div><MoodPicker /></section>
       <section className="contact-section"><div className="section-shell compact-contact"><p className="eyebrow contact-heading">Kezdjük egy beszélgetéssel</p><div className="contact-copy"><h2>Nézzük meg,<br /><span className="italic">mire van szükségetek.</span></h2><p>Meséljetek az időpontról, a helyszínről és arról,<br className="desktop-break" /> hogyan képzelitek el az esküvőtöket.</p></div><div className="contact-action"><Link className="button button-dark" href="/kapcsolat/">Kapcsolatfelvétel <Arrow /></Link><span className="consultation-note">Az első konzultáció ingyenes.</span></div></div></section>
     </main><Footer />
   </>;
