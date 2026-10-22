@@ -12,15 +12,30 @@ export function QuoteBackdrop({ photo }: { photo: Photo }) {
     if (!element || !section) return;
     const preference = window.matchMedia("(prefers-reduced-motion: reduce)");
     let frame = 0;
-    function update() {
+    let current = 0;
+    let target = 0;
+    let lastTime = 0;
+    const paint = () => { element.style.transform = `translate3d(0, ${current.toFixed(3)}px, 0)`; };
+    function animate(time = performance.now()) {
       frame = 0;
-      if (!element || !section) return;
-      const rect = section.getBoundingClientRect();
-      const offset = preference.matches ? 0 : Math.max(-300, Math.min(300, (window.innerHeight / 2 - rect.top - rect.height / 2) * .8));
-      element.style.transform = `translate3d(0, ${offset}px, 0)`;
+      const elapsed = lastTime ? Math.min(64, Math.max(1, time - lastTime)) : 16.67;
+      lastTime = time;
+      current += (target - current) * (1 - Math.exp(-elapsed / 110));
+      if (Math.abs(target - current) < .05) current = target;
+      paint();
+      if (current !== target) frame = requestAnimationFrame(animate);
+      else lastTime = 0;
     }
-    function schedule() { if (!frame) frame = requestAnimationFrame(update); }
-    update();
+    function measure() {
+      const rect = section!.getBoundingClientRect();
+      target = preference.matches ? 0 : 300 * Math.tanh((window.innerHeight / 2 - rect.top - rect.height / 2) * .8 / 300);
+    }
+    function schedule() {
+      measure();
+      if (preference.matches) { cancelAnimationFrame(frame); frame = 0; current = 0; lastTime = 0; paint(); }
+      else if (!frame) frame = requestAnimationFrame(animate);
+    }
+    measure(); current = target; paint();
     window.addEventListener("scroll", schedule, { passive: true });
     window.addEventListener("resize", schedule);
     preference.addEventListener("change", schedule);

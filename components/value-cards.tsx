@@ -16,6 +16,7 @@ export function ValueCards() {
   return <div className="personality-cards inline-personalities"><div className="personality-collage">
     {cards.map((card, index) => <button type="button" key={card.file}
       className={`personality-card personality-card-${index}${backs[index] ? " shows-back" : ""}`}
+      style={{ aspectRatio: `${card.width} / ${card.height}` }}
       aria-label={`${card.name}: ${backs[index] ? "előlap megjelenítése" : "részletek megjelenítése"}`}
       aria-expanded={backs[index]} aria-controls={`personality-back-${index}`}
       onPointerEnter={event => { if (event.pointerType === "mouse") toggle(index); }}
