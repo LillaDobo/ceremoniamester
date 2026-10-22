@@ -16,7 +16,7 @@ export function QuoteBackdrop({ photo }: { photo: Photo }) {
       frame = 0;
       if (!element || !section) return;
       const rect = section.getBoundingClientRect();
-      const offset = preference.matches ? 0 : Math.max(-200, Math.min(200, (window.innerHeight / 2 - rect.top - rect.height / 2) * .5));
+      const offset = preference.matches ? 0 : Math.max(-300, Math.min(300, (window.innerHeight / 2 - rect.top - rect.height / 2) * .8));
       element.style.transform = `translate3d(0, ${offset}px, 0)`;
     }
     function schedule() { if (!frame) frame = requestAnimationFrame(update); }
