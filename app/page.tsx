@@ -8,9 +8,10 @@ import { PhotoContent } from "@/components/photo";
 import { Reviews } from "@/components/reviews";
 import { Polaroid } from "@/components/polaroid";
 import { Services } from "@/components/services";
+import { PhotoCaption } from "@/components/photo-caption";
 import { QuoteBackdrop } from "@/components/quote-backdrop";
 import { ValueCards } from "@/components/value-cards";
-import { heroPhoto, titlePhotos, galleryPhotos, site } from "@/lib/site";
+import { heroPhoto, titlePhotos, site } from "@/lib/site";
 
 export default function Home() {
   return <>
@@ -22,13 +23,13 @@ export default function Home() {
         <div className="hero-bottom"><p>Ti ünnepeltek, én gondoskodom minden másról.</p></div>
       </section>
 
-      <section className="opening-photo" aria-label="Ricsi a nagy napon"><div className="hero-photo"><PhotoContent photo={heroPhoto} priority /><div className="photo-fade"><div className="section-shell"><span>Profin a háttérben, lazán veletek.</span><small>Ti ketten. A szeretteitek. Egy jó nap.</small></div></div></div></section>
+      <section className="opening-photo" aria-label="Ricsi a nagy napon"><div className="hero-photo"><PhotoContent photo={heroPhoto} priority /><PhotoCaption><div className="section-shell"><span>Profin a háttérben, lazán veletek.</span><small>Ti ketten. A szeretteitek. Egy jó nap.</small></div></PhotoCaption></div></section>
 
       <section id="rolam" className="about-background-section about-plain"><div className="about-mini section-shell"><div className="about-copy"><p className="eyebrow">Ki lesz veletek?</p><h2>Sziasztok, Ricsi vagyok.<br /><span className="italic">Örülök nektek.</span></h2><p>{site.introduction}</p><p>{site.goal}</p><div className="difference-copy"><h3>Újhullámú esküvő.<br />A ti szabályaitok szerint.</h3><p>{site.difference}</p></div></div><ValueCards /></div></section>
 
       <section className="story-section full-story section-space"><div className="story-copy section-shell"><p className="eyebrow">Egy baráti felkérésből indult</p><h2>Hogyan lettem <span className="italic">ceremóniamester?</span></h2><blockquote className="story-opening">„A munka talált meg engem.”</blockquote><details className="story-details"><summary>Tovább a teljes történethez <span aria-hidden="true">+</span></summary><div><p>{site.story}</p>{site.storyContinuation.map(paragraph => <p key={paragraph}>{paragraph}</p>)}<span className="signature">Ricsi</span></div></details></div></section>
 
-      <section className="quote-section lively-quote photographic-quote"><QuoteBackdrop photo={galleryPhotos[8]} /><div className="section-shell quote-layout"><div className="quote-intro"><p className="eyebrow">Jó kezekben. Jó hangulatban.</p><p className="quote">„A sikeres esküvő titka<br /><span className="italic">a jó hangulat és<br />a profi háttérmunka.”</span></p><p className="quote-promise">Velem mindkettőt megkapjátok.</p></div></div></section>
+      <section className="quote-section lively-quote photographic-quote"><QuoteBackdrop photo={{ id: "quote-wedding", src: "/images/quote-wedding.jpeg", alt: "Ricsi a párral az esküvői ünneplésen", caption: "", position: "50% 42%" }} /><div className="section-shell quote-layout"><div className="quote-intro"><p className="eyebrow">Jó kezekben. Jó hangulatban.</p><p className="quote">„A sikeres esküvő titka<br /><span className="italic">a jó hangulat és<br />a profi háttérmunka.”</span></p><p className="quote-promise">Velem mindkettőt megkapjátok.</p></div></div></section>
 
       <section id="galeria" className="gallery-section section-shell section-space"><div className="section-heading"><div><p className="eyebrow">Pillanatok, amik megmaradnak</p><h2>Ilyen, amikor<br /><span className="italic">együtt ünneplünk.</span></h2></div><p>A jó hangulat nem kötelező programokból születik. Figyelek a társaságra, és akkor adok lendületet, amikor jól esik.</p></div><Gallery /></section>
 

@@ -16,20 +16,22 @@ function ServiceIcon({ kind }: { kind: string }) {
 }
 
 export function Services() {
+  const [revealed, setRevealed] = useState<Set<number>>(() => new Set());
+  const [ready, setReady] = useState(false);
   const grid = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const element = grid.current;
     if (!element || !("IntersectionObserver" in window) || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const observer = new IntersectionObserver(entries => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add("is-revealed"); observer.unobserve(entry.target); } }); }, { threshold: .12 });
-    element.classList.add("reveal-ready");
+    const observer = new IntersectionObserver(entries => { entries.forEach(entry => { if (entry.isIntersecting) { const index = Array.from(element.children).indexOf(entry.target); setRevealed(previous => new Set([...previous, index])); observer.unobserve(entry.target); } }); }, { threshold: .12 });
+    setReady(true);
     Array.from(element.children).forEach(card => observer.observe(card));
-    return () => { observer.disconnect(); element.classList.remove("reveal-ready"); };
+    return () => observer.disconnect();
   }, []);
   const [pinned, setPinned] = useState<number | null>(null);
   const [hovered, setHovered] = useState<number | null>(null);
-  return <div className="flip-services" ref={grid}>{services.map((service, index) => {
+  return <div className={`flip-services${ready ? " reveal-ready" : ""}`} ref={grid}>{services.map((service, index) => {
     const flipped = pinned === index || hovered === index;
-    return <article className={`flip-service flip-service-${index % 3}${flipped ? " is-flipped" : ""}`} key={service.title}
+    return <article className={`flip-service flip-service-${index % 3}${flipped ? " is-flipped" : ""}${revealed.has(index) ? " is-revealed" : ""}`} key={service.title}
       onPointerEnter={event => { if (event.pointerType === "mouse") setHovered(index); }}
       onPointerLeave={() => setHovered(null)}>
       <div className="flip-service-inner">

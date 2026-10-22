@@ -1025,3 +1025,10 @@ html { scroll-behavior:smooth; }
   .flip-services.reveal-ready .flip-service { opacity:1; transform:none; transition:none; }
   .lightbox-close { transition:none; }
 }
+.parallax-backdrop { inset:-220px 0; }
+.caption-reveal > .section-shell { transition:opacity .85s ease,transform .85s cubic-bezier(.2,.75,.25,1); }
+.caption-reveal.is-ready:not(.is-visible) > .section-shell { opacity:0; transform:translateX(-65px); }
+.caption-reveal.is-visible > .section-shell { opacity:1; transform:translateX(0); }
+@media(prefers-reduced-motion:reduce) {
+  .caption-reveal > .section-shell { opacity:1!important; transform:none!important; transition:none; }
+}

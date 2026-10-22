@@ -23,7 +23,7 @@ export function ValueCards() {
       <span className="personality-front" aria-hidden={backs[index]}><Image src={`${basePath}/images/cards/${card.file}.svg`} width={card.width} height={card.height} alt={card.name} className="personality-art" /></span>
       <span className="personality-back" id={`personality-back-${index}`} aria-hidden={!backs[index]}>
         <svg viewBox={`0 0 ${card.width} ${card.height}`} preserveAspectRatio="none" className="personality-back-art"><g transform={`translate(${card.x} ${card.y}) rotate(${card.angle})`}>
-          <rect width="318.5" height="420" rx="10" fill="#F3F1E7" />
+          <defs><pattern id={`paper-${index}`} patternContentUnits="objectBoundingBox" width="1" height="1"><image href={`${basePath}/images/cards/paper-texture.webp`} width="479" height="637" preserveAspectRatio="none" transform="matrix(0.00208768 0 0 0.00158316 0 -0.00423626)" /></pattern></defs><rect width="318.5" height="420" rx="10" fill="#F3F1E7" /><rect width="318.5" height="420" rx="10" fill={`url(#paper-${index})`} />
           <rect x="11" y="10" width="297" height="399" rx="3.5" fill="none" stroke="#000" strokeOpacity=".1" />
           <foreignObject x="26" y="28" width="266" height="364"><div className="personality-back-copy"><span className="eyebrow">{card.name}</span><strong>{card.lead}</strong><span>{card.text}</span></div></foreignObject>
         </g></svg>
