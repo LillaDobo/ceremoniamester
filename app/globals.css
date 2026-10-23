@@ -1081,3 +1081,15 @@ html { scroll-behavior:smooth; }
   .inline-personalities .personality-card-1 { top:285px; }
   .inline-personalities .personality-card-2 { top:570px; left:-8px; }
 }
+/* Restore the left-hand card and stagger the group at its corners. */
+.inline-personalities .personality-collage { container-type:inline-size; width:100%; max-width:580px; height:auto; min-height:0; aspect-ratio:580 / 990; }
+.inline-personalities .personality-card { width:52%; max-width:300px; }
+.inline-personalities .personality-card-0 { top:0; left:0; }
+.inline-personalities .personality-card-1 { top:52cqw; right:10%; left:auto; }
+.inline-personalities .personality-card-2 { top:104cqw; left:0; right:auto; }
+@media(max-width:767px) {
+  .inline-personalities .personality-collage { max-width:345px; aspect-ratio:100 / 315; }
+  .inline-personalities .personality-card { width:84%; max-width:290px; }
+  .inline-personalities .personality-card-1 { top:96cqw; right:0; }
+  .inline-personalities .personality-card-2 { top:192cqw; left:0; }
+}
