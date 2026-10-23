@@ -1,8 +1,34 @@
-function Doodle({ kind }: { kind: string }) {
-  return <svg viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-    {kind === "empathy" ? <><path d="M27 60 15 50 7 63l14 12 21 8h22l17-11 12-17-11-9-16 17-24 4-10-7Z"/><path d="m21 74 7-11m38 0 7 4 8-5"/><path d="M50 49 34 35c-16-16 8-32 16-16 8-16 32 0 16 16L50 49Z" fill="#d9bcb0"/><path d="m8 63 8 5m70-17 4 4"/></> : kind === "easy" ? <><path d="M36 86c-8-7-10-14-10-28V42c0-7 9-7 9 0v12-37c0-8 10-8 10 0v32-39c0-8 10-8 10 0v42-26c0-8 10-8 10 0v31l8-13c4-7 13-2 10 5L72 77c-4 8-10 12-21 12H36Z"/><path d="m35 60 8-5 11 9m-17 2c15-4 19 7 14 14M70 10l4 4m6 2 5 1M17 19l5 5"/><path d="M42 75c0-6 14-6 14 0" stroke="#bf907e" strokeWidth="3"/></> : <><path d="M24 19h45v63H24zM30 13h33v13H30zM33 40h26M33 50h21M33 60h15"/><path d="m65 53 7-9 10 8-7 9-21 19-8 3 3-8 16-22Z" fill="#dccab2"/><path d="m65 53 10 8M46 83l8-3"/></>}
-  </svg>;
-}
+"use client";
+
+import Image from "next/image";
+import { useState } from "react";
+
+const cards = [
+  { name: "Empatikus", file: "empatikus", width: 345, height: 440, x: 0, y: 20.1346, angle: -3.62448, lead: "A ti napotokból indulunk ki.", text: "Figyelek arra, mi fontos nektek, miben érzitek jól magatokat, és mi az, amit inkább kihagynátok. Olyan esküvőt rakunk össze, amelyben tényleg önmagatok lehettek." },
+  { name: "Profi", file: "profi", width: 397, height: 469, x: 82.6874, y: 2.42432, angle: 9.30151, lead: "A forgatókönyvtől az egész nap levezényléséig.", text: "Összehangolom a szolgáltatókat, kézben tartom a programot, és figyelek az apró részletekre is. Ti megélitek a napot, én gondoskodom arról, hogy gördülékenyen menjen." },
+  { name: "Laza", file: "laza", width: 384, height: 468, x: 0.000244141, y: 53.0339, angle: -9.58506, lead: "Semmi sem kötelező. Csináljuk a ti módotokon.", text: "Fiatalos, közvetlen hangulatban dolgozunk együtt. Jöhetnek a saját ötleteitek, a közös nevetések és a spontán pillanatok: a napot hozzátok igazítom." },
+];
+
 export function ValueCards() {
-  return <div className="value-cards"><div className="value-card"><Doodle kind="empathy" /><span>Empatikus</span><small>Rátok figyelek.</small></div><div className="value-card"><Doodle kind="easy" /><span>Laza</span><small>Semmi kötelező feszengés.</small></div><div className="value-card value-card-draft"><Doodle kind="draft" /><span>Harmadik jelző</span><small>Még nem végleges.</small></div></div>;
+  const [backs, setBacks] = useState<boolean[]>([false, false, false]);
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+  const toggle = (index: number) => setBacks(previous => previous.map((back, i) => i === index ? !back : back));
+  return <div className="personality-cards inline-personalities"><div className="personality-collage">
+    {cards.map((card, index) => <button type="button" key={card.file}
+      className={`personality-card personality-card-${index}${backs[index] ? " shows-back" : ""}`}
+      style={{ aspectRatio: `${card.width} / ${card.height}` }}
+      aria-label={`${card.name}: ${backs[index] ? "előlap megjelenítése" : "részletek megjelenítése"}`}
+      aria-expanded={backs[index]} aria-controls={`personality-back-${index}`}
+      onPointerEnter={event => { if (event.pointerType === "mouse") toggle(index); }}
+      onClick={event => { if (event.detail === 0 || !window.matchMedia("(hover: hover) and (pointer: fine)").matches) toggle(index); }}>
+      <span className="personality-front" aria-hidden={backs[index]}><Image src={`${basePath}/images/cards/${card.file}.svg`} width={card.width} height={card.height} alt={card.name} className="personality-art" /></span>
+      <span className="personality-back" id={`personality-back-${index}`} aria-hidden={!backs[index]}>
+        <svg viewBox={`0 0 ${card.width} ${card.height}`} preserveAspectRatio="none" className="personality-back-art"><g transform={`translate(${card.x} ${card.y}) rotate(${card.angle})`}>
+          <defs><pattern id={`paper-${index}`} patternContentUnits="objectBoundingBox" width="1" height="1"><image href={`${basePath}/images/cards/paper-texture.webp`} width="479" height="637" preserveAspectRatio="none" transform="matrix(0.00208768 0 0 0.00158316 0 -0.00423626)" /></pattern></defs><rect width="318.5" height="420" rx="10" fill="#F3F1E7" /><rect width="318.5" height="420" rx="10" fill={`url(#paper-${index})`} />
+          <rect x="11" y="10" width="297" height="399" rx="3.5" fill="none" stroke="#000" strokeOpacity=".1" />
+          <foreignObject x="26" y="28" width="266" height="364"><div className="personality-back-copy"><span className="eyebrow">{card.name}</span><strong>{card.lead}</strong><span>{card.text}</span></div></foreignObject>
+        </g></svg>
+      </span>
+    </button>)}
+  </div></div>;
 }

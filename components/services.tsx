@@ -1,3 +1,6 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
 import { services } from "@/lib/site";
 
 function ServiceIcon({ kind }: { kind: string }) {
@@ -13,6 +16,37 @@ function ServiceIcon({ kind }: { kind: string }) {
 }
 
 export function Services() {
-  // Independent columns prevent an opened card stretching its neighbour.
-  return <div className="service-mosaic">{[services.slice(0, 3), services.slice(3)].map((column, columnIndex) => <div className={`service-column service-column-${columnIndex + 1}`} key={columnIndex}>{column.map((service, index) => <details key={service.title} className={`service-tile service-tile-${columnIndex * 3 + index + 1}`}><summary><span className="service-topline"><span className="service-number">0{columnIndex * 3 + index + 1}</span>{service.optional && <span className="optional-label">Opcionális</span>}<span className="service-icon"><ServiceIcon kind={service.icon} /></span></span><span className="service-bottomline"><span className="service-title">{service.title}</span><span className="service-plus" aria-hidden="true">+</span></span></summary><div className="service-content"><h3>{service.subtitle}</h3><p>{service.text}</p></div></details>)}</div>)}</div>;
+  const [revealed, setRevealed] = useState<Set<number>>(() => new Set());
+  const [ready, setReady] = useState(false);
+  const grid = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const element = grid.current;
+    if (!element || !("IntersectionObserver" in window) || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const observer = new IntersectionObserver(entries => { entries.forEach(entry => { if (entry.isIntersecting) { const index = Array.from(element.children).indexOf(entry.target); setRevealed(previous => new Set([...previous, index])); observer.unobserve(entry.target); } }); }, { threshold: .12 });
+    setReady(true);
+    Array.from(element.children).forEach(card => observer.observe(card));
+    return () => observer.disconnect();
+  }, []);
+  const [pinned, setPinned] = useState<number | null>(null);
+  const [hovered, setHovered] = useState<number | null>(null);
+  return <div className={`flip-services${ready ? " reveal-ready" : ""}`} ref={grid}>{services.map((service, index) => {
+    const flipped = pinned === index || hovered === index;
+    return <article className={`flip-service flip-service-${index % 3}${flipped ? " is-flipped" : ""}${revealed.has(index) ? " is-revealed" : ""}`} key={service.title}
+      onPointerEnter={event => { if (event.pointerType === "mouse") setHovered(index); }}
+      onPointerLeave={() => setHovered(null)}>
+      <div className="flip-service-inner">
+        <div className="flip-face flip-front" aria-hidden={flipped} inert={flipped}>
+          <span className="service-icon"><ServiceIcon kind={service.icon} /></span>
+          <h3>{service.title}</h3><p>{service.subtitle}</p>
+        </div>
+        <div className="flip-face flip-back" id={`service-detail-${index}`} aria-hidden={!flipped} inert={!flipped}>
+          <h3>{service.title}</h3><p>{service.text}</p>
+        </div>
+      </div>
+      <button type="button" className="flip-toggle" aria-expanded={flipped} aria-controls={`service-detail-${index}`} aria-label={`${service.title}: ${flipped ? "kártya visszafordítása" : "részletek"}`}
+        onClick={() => { setPinned(flipped ? null : index); setHovered(null); }}>
+
+      </button>
+    </article>;
+  })}</div>;
 }
