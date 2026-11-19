@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "predev": "node scripts/sync-palette.mjs",
+    "prebuild": "node scripts/sync-palette.mjs"
   },
   "dependencies": {
     "jquery": "^4.0.0",

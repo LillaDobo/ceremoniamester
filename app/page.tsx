@@ -23,7 +23,7 @@ export default function Home() {
         <div className="hero-bottom"><p>Ti ünnepeltek, én gondoskodom minden másról.</p></div>
       </section>
 
-      <section className="opening-photo" aria-label="Ricsi a nagy napon"><div className="hero-photo"><PhotoContent photo={heroPhoto} priority /><PhotoCaption><div className="section-shell"><span>Profin a háttérben, lazán veletek.</span><small>Ti ketten. A szeretteitek. Egy jó nap.</small></div></PhotoCaption></div></section>
+      <section className="opening-photo" aria-label="Ricsi a nagy napon"><div className="hero-photo"><PhotoContent photo={heroPhoto} priority /><PhotoCaption><div className="section-shell"><span>Profin a háttérben, lazán veletek.</span><small>Leveszem az összes terhet a vállatokról.</small></div></PhotoCaption></div></section>
 
       <section id="rolam" className="about-background-section about-plain"><div className="about-mini section-shell"><div className="about-copy"><p className="eyebrow">Ki lesz veletek?</p><h2>Sziasztok, Ricsi vagyok.<br /><span className="italic">Örülök nektek.</span></h2><p>{site.introduction}</p><p>{site.goal}</p><div className="difference-copy"><h3>Újhullámú esküvő.<br />A ti szabályaitok szerint.</h3><p>{site.difference}</p></div></div><ValueCards /></div></section>
 
