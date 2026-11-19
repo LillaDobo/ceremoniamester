@@ -8,9 +8,9 @@ Minden felületi szín az **`app/colors.css`** fájlból származik. Az elején 
 
 | Alapszín | Változó | Mostani érték | Feladat |
 | --- | --- | --- | --- |
-| Világos kavicsszürke | `--palette-gray` | `#E8ECEF` | Oldalháttér, nagy üres felületek, semleges kártyák alapja. |
-| Füstös petrol | `--palette-petrol` | `#1A7A82` | Címek, navigáció, szolgáltatáshatszögek, lábléc és fontosabb grafikai elemek. |
-| Napsárga | `--palette-yellow` | `#F2B824` | Kapcsolatfelvételi gombok, ikonrészletek, interaktív kiemelések. |
+| Világos kavicsszürke | `--palette-gray` | `#E5E4DF` | Oldalháttér, nagy üres felületek, semleges kártyák alapja. |
+| Zöldbe hajló, füstös petrol | `--palette-petrol` | `#287B76` | Címek, navigáció, szolgáltatáskártyák, lábléc és fontosabb grafikai elemek. |
+| Napsárga | `--palette-yellow` | `#F2B824` | Kapcsolatfelvételi gombok, egy szolgáltatáskártya, ikonrészletek, interaktív kiemelések. |
 
 Az alapszínek módosításával a hozzájuk tartozó világosabb és sötétebb árnyalatok, szegélyek, hoverállapotok és árnyékok **automatikusan újraszámolódnak**. Például a petrolt csak egyszer kell `#2B8A94`-re átírni; nem kell külön megkeresni minden címet és kártyát.
 
@@ -21,8 +21,8 @@ A módosítás a futó fejlesztői nézetben frissül; a megosztott weboldalhoz 
 Az arány vizuális irányelv, nem pixelenként mért kvóta. A fotók természetes színei nem részei a paletta arányszámításának.
 
 - **60% semleges alap:** a főoldal és a kapcsolatoldal háttere, a fotók közötti szünetek, a bemutatkozás, a polaroidkeretek és a véleménykártyák. A szürke ne váljon sötét, összefüggő tömbbé.
-- **30% petrol karakter:** főcímek, szalagcímek, négy hangsúlyos szolgáltatáshatszög, a lábléc, valamint a világos petrolból képzett kártyák és a kapcsolatblokk. A sötétebb árnyalat csak kis szövegekhez vagy kontrasztos felületekhez kell.
-- **Legfeljebb 10% sárga akcentus:** elsősorban a kapcsolatfelvételi gomb és az ikonok apró elemei. Nincs sárga oldalháttér vagy hosszú sárga folyószöveg. A navigáció hover-aláhúzása is ebből a színből készül.
+- **30% petrol karakter:** főcímek, szalagcímek, egy hangsúlyos szolgáltatáskártya, a lábléc, valamint a világos petrolból képzett apró részletek. A sötétebb árnyalat csak kis szövegekhez vagy kontrasztos felületekhez kell.
+- **Legfeljebb 10% sárga akcentus:** elsősorban a kapcsolatfelvételi gomb és az ikonok apró elemei. Egy szolgáltatáskártya lehet sárga, de nincs sárga oldalháttér vagy hosszú sárga folyószöveg. A navigáció hover-aláhúzása is ebből a színből készül.
 
 ## Melyik felület melyik színt kapja?
 
@@ -30,12 +30,12 @@ Az arány vizuális irányelv, nem pixelenként mért kvóta. A fotók természe
 | --- | --- | --- |
 | `--color-bg` | Az oldal alapja | Közvetlenül a kavicsszürke. |
 | `--color-surface` | Semleges kártya, polaroid, mobilmenü | A szürke fehérrel világosított változata; a háttértől finoman elválik. |
-| `--color-surface-muted` | Másodlagos semleges kitöltés | A szürke kevés petrollal keverve. |
-| `--color-brand` | Négy hatszög, szalagcímek és ikonvonalak | Az eredeti petrol. |
+| `--color-surface-muted` | Másodlagos semleges kitöltés | A szürke fehérrel világosítva; nincs benne petrol. |
+| `--color-brand` | Egy szolgáltatáskártya, szalagcímek és ikonvonalak | Az eredeti petrol. |
 | `--color-heading` | Címek, navigáció | A petrol enyhén sötétített változata, világos felületen is jól olvasható. |
 | `--color-brand-dark` | Lábléc, erős kontraszt, fókusz | Mély petrol; nagy felületen takarékosan. |
-| `--color-brand-soft` | Két világos hatszög, kapcsolatblokk, történetgomb | Világos petrol, sötét címmel. |
-| `--color-accent` | CTA-gomb, apró ikonrészlet, hover-aláhúzás | Napsárga, sötét felirattal. |
+| `--color-brand-soft` | Másodlagos, finom petrolkitöltések | Világos petrol, sötét címmel. |
+| `--color-accent` | CTA-gomb, egy szolgáltatáskártya, ikonrészlet, hover-aláhúzás | Napsárga, sötét felirattal. |
 | `--color-accent-hover` | CTA hover | A sárga petrollal mélyített változata. A gomb alakja nem változik. |
 | `--color-accent-soft` | Ikonkitöltés | Halvány sárga; csak kis felületen. |
 | `--color-text` | Folyószöveg, sárga gomb felirata | Petrolból képzett, sötét, semleges tinta. |
@@ -53,7 +53,11 @@ A személyiségkártyák eredeti vonalas grafikái megmaradnak, de a színeiket 
 
 A linkek petrolszínűek, rámutatásra sárga aláhúzás jelenik meg. A billentyűzetfókusz jól látható mély petrol keretet kap. Petrolkártyán világos szöveg, sárga gombon sötét szöveg szerepel. Fotón a világos felirat alatt mindig sötétítő réteg van.
 
-A szolgáltatáshatszögek felülete és a hozzájuk tartozó leírás azonos alakot kap. Négy petrol és két halvány petrol hatszög ad ritmust; a sárga az ikonokat emeli ki. A kártyák görgetéskor beúsznak, egérrel vagy érintéssel a leírásuk is megjeleníthető. A csökkentett mozgást kérő rendszerbeállítás megmarad.
+A szolgáltatások ismét téglalap alakú kártyák. Hat kártyából négy semleges, egy petrol, egy pedig napsárga. A sárga kártyán sötét szöveg szerepel; ez a nagyobb akcentus biztosítja, hogy a sárga ne csak apró, alig észrevehető ikonokban jelenjen meg. A gombok, az ikonalapok, a történetgomb, néhány vékony szegély és az idézet zárósorának aláhúzása is ezt támogatja.
+
+### Miért lett kevésbé kékes?
+
+Az előző `#E8ECEF` hűvös szürke, a `#1A7A82` kékes petrol volt. A mostani `#E5E4DF` melegebb kavicsszürke; a `#287B76` enyhén zöldbe hajlik. A nagy semleges felületeket már nem színezzük petrollal: a szöveg, a szegély és az árnyék is semlegesebb. A napsárga `#F2B824` megmaradt, de több jól látható felületet kapott. A 60–30–10 arány továbbra is az összhatás iránya, nem a komponensek darabszáma.
 
 ## Hogyan kérj később színváltoztatást?
 

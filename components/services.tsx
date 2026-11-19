@@ -29,7 +29,7 @@ export function Services() {
   }, []);
   const [pinned, setPinned] = useState<number | null>(null);
   const [hovered, setHovered] = useState<number | null>(null);
-  return <div className={`flip-services hex-services${ready ? " reveal-ready" : ""}`} ref={grid}>{services.map((service, index) => {
+  return <div className={`flip-services rectangle-services${ready ? " reveal-ready" : ""}`} ref={grid}>{services.map((service, index) => {
     const flipped = pinned === index || hovered === index;
     return <article className={`flip-service flip-service-${index % 3}${flipped ? " is-flipped" : ""}${revealed.has(index) ? " is-revealed" : ""}`} key={service.title}
       onPointerEnter={event => { if (event.pointerType === "mouse") setHovered(index); }}

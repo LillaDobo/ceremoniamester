@@ -51,26 +51,32 @@ h1,h2,h3,.header-brand { color:var(--color-heading); }
 .personality-paper-image { filter:grayscale(1); opacity:.12; }
 .personality-front-art { display:block; width:100%; height:100%; }
 
-/* Centred hexagons, a neutral surround and restrained petrol emphasis. */
-.hex-services { max-width:350px; grid-template-columns:1fr; gap:26px; padding:18px 12px 28px; grid-auto-rows:1fr; }
-.hex-services .flip-service { min-height:0; height:100%; aspect-ratio:1 / 1.13; perspective:1200px; filter:drop-shadow(0 9px 9px var(--color-shadow)); }
-.hex-services .flip-service-inner { display:grid; height:100%; }
-.hex-services .flip-face { position:relative; inset:auto; grid-area:1 / 1; min-height:0; height:100%; padding:48px 14%; border:0; border-radius:0; background:transparent; box-shadow:none; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; color:var(--color-on-brand); isolation:isolate; overflow:visible; }
-.hex-services .flip-face::before { content:""; position:absolute; inset:0; clip-path:polygon(25% 0,75% 0,100% 50%,75% 100%,25% 100%,0 50%); background:var(--color-brand); z-index:-1; }
-.hex-services .flip-service:nth-child(3n) .flip-face { color:var(--color-heading); }
-.hex-services .flip-service:nth-child(3n) .flip-face::before { background:var(--color-brand-soft); }
-.hex-services .flip-face h3 { font-family:"Bodoni Moda",Georgia,serif; color:inherit; font-size:clamp(20px,2vw,28px); line-height:1.2; margin:0 0 12px; text-wrap:balance; }
-.hex-services .flip-front p { color:inherit; opacity:.9; font-size:14px; line-height:1.6; max-width:23ch; }
-.hex-services .flip-back p { color:inherit; font-size:14px; line-height:1.65; margin:0; max-width:29ch; }
-.hex-services .service-icon { display:block; width:54px; height:54px; color:var(--color-accent); margin:0 auto 16px; }
-.hex-services .service-icon svg { width:100%; height:100%; }
-.hex-services .service-icon svg > circle:first-child { fill:none; }
-.hex-services .flip-toggle { border-radius:0; clip-path:polygon(25% 0,75% 0,100% 50%,75% 100%,25% 100%,0 50%); }
-.hex-services .flip-toggle:focus-visible { outline:0; background:transparent; box-shadow:inset 0 0 0 4px var(--color-accent); }
-@media(min-width:700px) { .hex-services { max-width:1120px; grid-template-columns:repeat(2,minmax(0,1fr)); } }
-@media(min-width:1024px) { .hex-services { grid-template-columns:repeat(3,minmax(0,1fr)); } }
-@media(max-width:599px) { .hex-services { max-width:350px; grid-template-columns:1fr; gap:20px; } .hex-services .flip-face { padding-block:42px; } }
+/* Calm rectangular cards: one petrol card and one sunny accent card. */
+.rectangle-services { max-width:1120px; grid-template-columns:1fr; gap:22px; padding:12px 4px 24px; grid-auto-rows:1fr; }
+.rectangle-services .flip-service { --service-bg:var(--color-surface); --service-ink:var(--color-text); --service-heading:var(--color-heading); min-height:300px; height:100%; }
+.rectangle-services .flip-service:nth-child(2) { --service-bg:var(--color-brand); --service-ink:var(--color-on-brand); --service-heading:var(--color-on-brand); }
+.rectangle-services .flip-service:nth-child(5) { --service-bg:var(--color-accent); --service-ink:var(--color-on-accent); --service-heading:var(--color-on-accent); }
+.rectangle-services .flip-face { padding:28px; min-height:300px; border:1px solid var(--color-border); border-radius:14px; background:var(--service-bg); color:var(--service-ink); box-shadow:0 6px 18px var(--color-shadow); }
+.rectangle-services .flip-face h3 { color:var(--service-heading); font-family:"Bodoni Moda",Georgia,serif; font-size:26px; line-height:1.2; margin:0 0 14px; text-wrap:balance; }
+.rectangle-services .flip-face p { font-size:16px; line-height:1.7; margin:0; }
+.rectangle-services .service-icon { display:block; width:54px; height:54px; padding:6px; border-radius:50%; background:var(--color-accent-soft); color:var(--color-heading); margin:0 0 18px; }
+.rectangle-services .service-icon svg { width:100%; height:100%; }
+.rectangle-services .service-icon svg > circle:first-child { fill:none; }
+.rectangle-services .flip-toggle { border-radius:14px; clip-path:none; }
+.rectangle-services .flip-toggle:focus-visible { outline:3px solid var(--color-focus); outline-offset:4px; }
+@media(min-width:650px) { .rectangle-services { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media(min-width:1100px) { .rectangle-services { grid-template-columns:repeat(3,minmax(0,1fr)); } }
 @media(max-width:1023px) and (min-width:768px) { .site-header .header-contact { font-size:13px; } }
-
-@media(max-width:699px) { .hex-services .flip-service { aspect-ratio:1 / 1.28; } .hex-services .flip-face h3 { font-size:22px; } }
 @media(max-width:420px) { .site-header .header-contact .contact-arrow { display:none; } .site-header .header-contact { gap:0; } }
+
+/* Visible warmth in a few larger accents, rather than a blue wash. */
+.title-dot { color:var(--color-accent); }
+.difference-copy,.story-opening { border-color:var(--color-accent); }
+.story-details summary { background:var(--color-accent-soft); border-color:var(--color-accent); color:var(--color-text); }
+.story-details summary:hover { background:var(--color-accent); }
+.contact-section { background:var(--color-surface-muted); border-top:4px solid var(--color-accent); }
+.free-badge { background:var(--color-accent-soft); color:var(--color-text); }
+.cm-cards .cm-icon { padding:8px; border-radius:50%; background:var(--color-accent-soft); }
+.review-mark { color:var(--color-heading); }
+.photographic-quote .quote-promise { display:inline-block; padding-bottom:10px; border-bottom:3px solid var(--color-accent); }
+.site-footer.compact-footer { border-top:3px solid var(--color-accent); }
