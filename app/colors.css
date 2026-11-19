@@ -1,7 +1,7 @@
 /* The only three editable palette hex codes. See docs/SZINRENDSZER.md. */
 :root {
-  --palette-gray: #E5E4DF;
-  --palette-petrol: #287B76;
+  --palette-gray: #F4F1EA;
+  --palette-petrol: #2A7F83;
   --palette-yellow: #F2B824;
 
   --color-bg: var(--palette-gray);

@@ -1,8 +1,8 @@
 # Faur Richárd – a weboldal színrendszere
 
-Frissítve: **2026. november 19.** A dokumentum a jelenlegi, melegebb szürke–zöldes petrol–napsárga palettát és a téglalap alakú szolgáltatáskártyákat írja le.
+Frissítve: **2026. november 19.** A dokumentum a jelenlegi, meleg törtfehér–petroltürkiz–napsárga palettát és a téglalap alakú szolgáltatáskártyákat írja le.
 
-A cél egy laza, közvetlen, mégis összeszedett megjelenés. A világos kavicsszürke hagyja érvényesülni a fotókat, a füstös petrol ad karaktert és szakmai tartást, a napsárga pedig a kapcsolatfelvételre és az apró, játékos részletekre irányítja a figyelmet.
+A cél egy laza, közvetlen, mégis összeszedett megjelenés. A meleg törtfehér hagyja érvényesülni a fotókat, a füstös petrol ad karaktert és szakmai tartást, a napsárga pedig a kapcsolatfelvételre és az apró, játékos részletekre irányítja a figyelmet.
 
 ## Három alapszín, egyetlen szerkesztési hely
 
@@ -10,8 +10,8 @@ Minden felületi szín az [app/colors.css](../app/colors.css) fájlból származ
 
 | Alapszín | Változó | Mostani érték | Feladat |
 | --- | --- | --- | --- |
-| Világos kavicsszürke | `--palette-gray` | `#E5E4DF` | Oldalháttér, nagy üres felületek, semleges kártyák alapja. |
-| Zöldbe hajló, füstös petrol | `--palette-petrol` | `#287B76` | Címek, navigáció, szolgáltatáskártyák, lábléc és fontosabb grafikai elemek. |
+| Meleg törtfehér | `--palette-gray` | `#F4F1EA` | Oldalháttér, nagy üres felületek, semleges kártyák alapja. |
+| Petroltürkiz | `--palette-petrol` | `#2A7F83` | Címek, navigáció, szolgáltatáskártyák, lábléc és fontosabb grafikai elemek. |
 | Napsárga | `--palette-yellow` | `#F2B824` | Kapcsolatfelvételi gombok, egy szolgáltatáskártya, ikonrészletek, interaktív kiemelések. |
 
 Az alapszínek módosításával a hozzájuk tartozó világosabb és sötétebb árnyalatok, szegélyek, hoverállapotok és árnyékok **automatikusan újraszámolódnak**. Például a petrolt csak egyszer kell `#2B8A94`-re átírni; nem kell külön megkeresni minden címet és kártyát.
@@ -30,7 +30,7 @@ Az arány vizuális irányelv, nem pixelenként mért kvóta. A fotók természe
 
 | Szerep / CSS-változó | Használat | Szabály |
 | --- | --- | --- |
-| `--color-bg` | Az oldal alapja | Közvetlenül a kavicsszürke. |
+| `--color-bg` | Az oldal alapja | Közvetlenül a meleg törtfehér. |
 | `--color-surface` | Semleges kártya, polaroid, mobilmenü | A szürke fehérrel világosított változata; a háttértől finoman elválik. |
 | `--color-surface-muted` | Másodlagos semleges kitöltés | A szürke fehérrel világosítva; nincs benne petrol. |
 | `--color-brand` | Egy szolgáltatáskártya, szalagcímek és ikonvonalak | Az eredeti petrol. |
@@ -72,7 +72,7 @@ A hátoldal ugyanazt a felület- és szövegszínt használja, mint az előlap. 
 
 ### Miért lett kevésbé kékes?
 
-Az előző `#E8ECEF` hűvös szürke, a `#1A7A82` kékes petrol volt. A mostani `#E5E4DF` melegebb kavicsszürke; a `#287B76` enyhén zöldbe hajlik. A nagy semleges felületeket már nem színezzük petrollal: a szöveg, a szegély és az árnyék is semlegesebb. A napsárga `#F2B824` megmaradt, de több jól látható felületet kapott. A 60–30–10 arány továbbra is az összhatás iránya, nem a komponensek darabszáma.
+Az előző `#E8ECEF` hűvös szürke, a `#1A7A82` kékes petrol volt. A jelenlegi `#F4F1EA` meleg törtfehér alap; a `#2A7F83` a kért petroltürkiz. A nagy semleges felületeket már nem színezzük petrollal: a szöveg, a szegély és az árnyék is semlegesebb. A napsárga `#F2B824` megmaradt, de több jól látható felületet kapott. A 60–30–10 arány továbbra is az összhatás iránya, nem a komponensek darabszáma.
 
 ## Hogyan kérj később színváltoztatást?
 
@@ -96,11 +96,11 @@ Az alábbi kontrasztarányok a CSS-ben megadott, származtatott színekből szá
 
 | Párosítás | Számolt kontraszt |
 | --- | ---: |
-| Folyószöveg / szürke háttér | 14,92 : 1 |
-| Cím / szürke háttér | 5,07 : 1 |
-| Magyarázó szöveg / szürke háttér | 5,78 : 1 |
-| Világos szöveg / petrol | 4,77 : 1 |
-| Sötét szöveg / napsárga | 10,54 : 1 |
+| Folyószöveg / törtfehér háttér | 16,75 : 1 |
+| Cím / törtfehér háttér | 5,40 : 1 |
+| Magyarázó szöveg / törtfehér háttér | 6,37 : 1 |
+| Világos szöveg / petrol | 4,59 : 1 |
+| Sötét szöveg / napsárga | 10,49 : 1 |
 
 ## Generált böngészőikon és Git-frissítés
 
@@ -115,3 +115,15 @@ npm.cmd run dev
 ```
 
 A `git restore` itt csak a generált ikon helyi módosítását dobja el. Más, saját módosítás alatt álló fájlokra ezt a lépést nem kell kiterjeszteni.
+
+
+## Színváltoztatási napló
+
+Minden további palettamódosítást ebben a naplóban is rögzítünk; a fenti palettatáblázat mindig az aktuális állapotot mutatja.
+
+| Dátum | Szerep | Előző érték | Új érték | Kapcsolódó változás |
+| --- | --- | --- | --- | --- |
+| 2026. november 19. | Oldalháttér (`--palette-gray`) | `#E5E4DF` | `#F4F1EA` | Meleg törtfehér háttér; a semleges felületek és a származtatott árnyalatok is követik. |
+| 2026. november 19. | Petrol alapszín (`--palette-petrol`) | `#287B76` | `#2A7F83` | A korábbi zöldes petrol helyett a kért petroltürkiz; címek, kártya, ikonok és lábléc is követi. |
+
+A napsárga `#F2B824` ebben a módosításban nem változott.
