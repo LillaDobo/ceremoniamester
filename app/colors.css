@@ -1,0 +1,30 @@
+/* Three global palette colours and one service-card override. See docs/SZINRENDSZER.md. */
+:root {
+  --palette-gray: #F4F1EA;
+  --palette-petrol: #227371;
+  --color-service-petrol: #2A7F83;
+  --palette-yellow: #F2B824;
+
+  --color-bg: var(--palette-gray);
+  --color-surface: color-mix(in srgb, var(--palette-gray) 22%, white);
+  --color-surface-muted: color-mix(in srgb, var(--palette-gray) 85%, white);
+  --color-brand: var(--palette-petrol);
+  --color-heading: color-mix(in srgb, var(--palette-petrol) 85%, black);
+  --color-brand-dark: color-mix(in srgb, var(--palette-petrol) 65%, black);
+  --color-brand-soft: color-mix(in srgb, var(--palette-petrol) 8%, var(--color-surface));
+  --color-brand-border: color-mix(in srgb, var(--palette-petrol) 20%, var(--palette-gray));
+  --color-accent: var(--palette-yellow);
+  --color-accent-hover: color-mix(in srgb, var(--palette-yellow) 84%, var(--palette-petrol));
+  --color-accent-soft: color-mix(in srgb, var(--palette-yellow) 20%, var(--color-surface));
+  --color-text: color-mix(in srgb, var(--palette-petrol) 15%, black);
+  --color-muted: color-mix(in srgb, var(--color-brand-dark) 55%, dimgray);
+  --color-on-brand: var(--color-surface);
+  --color-on-accent: var(--color-text);
+  --color-border: color-mix(in srgb, var(--color-text) 16%, var(--palette-gray));
+  --color-card: var(--color-surface);
+  --color-icon-fill: var(--color-accent-soft);
+  --color-shadow: color-mix(in srgb, var(--color-text) 12%, transparent);
+  --color-shadow-hover: color-mix(in srgb, var(--color-text) 20%, transparent);
+  --color-photo-scrim: color-mix(in srgb, var(--color-text) 62%, transparent);
+  --color-focus: var(--color-brand-dark);
+}

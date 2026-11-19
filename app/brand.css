@@ -1,0 +1,82 @@
+/* Component colour roles. Primitive colours live only in colors.css. */
+body { background:var(--color-bg); color:var(--color-text); }
+h1,h2,h3,.header-brand { color:var(--color-heading); }
+.eyebrow,.signature { color:var(--color-brand); }
+::selection { background:var(--color-accent); color:var(--color-on-accent); }
+:focus-visible { outline-color:var(--color-focus); }
+.site-header { background-color:var(--color-bg); background-image:none; border-color:var(--color-border); }
+.desktop-nav { font-size:15px; }
+.header-contact { font-size:14px; }
+.mobile-nav { background:var(--color-surface); }
+.mobile-nav a { font-size:18px; }
+.desktop-nav a,.header-contact,.mobile-nav a { color:var(--color-heading); }
+.desktop-nav a:hover,.mobile-nav a:hover,.header-contact:hover { color:var(--color-brand); }
+.desktop-nav a::after,.mobile-nav a::after,.site-header .contact-link::after,.footer-links a::after { background:var(--color-accent); height:2px; }
+.title-dot { color:var(--color-heading); }
+.title-polaroid { background:var(--color-surface); box-shadow:0 5px 14px var(--color-shadow); }
+.hero-bottom p { color:var(--color-muted); }
+.photo-fade { color:var(--color-on-brand); background:linear-gradient(transparent,var(--color-photo-scrim)); }
+.photo-fade small { font-size:clamp(15px,1.3vw,20px); line-height:1.65; color:var(--color-on-brand); }
+.about-plain .about-copy { background:transparent; }
+.difference-copy { border-color:var(--color-brand-border); }
+.story-details summary { background:var(--color-brand-soft); border-color:var(--color-brand-border); color:var(--color-heading); transition:background .2s; }
+.story-details summary:hover { background:var(--color-surface-muted); }
+.story-opening { border-color:var(--color-brand-border); color:var(--color-heading); }
+.button,.button-dark { background:var(--color-accent); color:var(--color-on-accent); box-shadow:0 3px 0 var(--color-brand-border),0 8px 20px var(--color-shadow); }
+.button:hover,.button-dark:hover { background:var(--color-accent-hover); color:var(--color-on-accent); }
+.consultation-note { color:var(--color-muted); }
+.contact-section { background:var(--color-brand-soft); border-block:1px solid var(--color-border); }
+.contact-methods { background:var(--color-surface); border:1px solid var(--color-border); }
+.contact-method { border-color:var(--color-border); }
+.free-badge { background:var(--color-brand-soft); color:var(--color-heading); }
+.process-grid article,.process-grid article:nth-child(2),.process-grid article:nth-child(3) { background:var(--color-surface); border:1px solid var(--color-border); }
+.step-number { color:var(--color-brand); }
+.cm-cards article,.cm-cards article:nth-child(2),.cm-cards article:nth-child(3) { background:var(--color-surface); border:1px solid var(--color-border); box-shadow:0 4px 15px var(--color-shadow); }
+.cm-cards .cm-icon { color:var(--color-brand); }
+.review-card,.review-card:nth-child(2),.review-card:nth-child(3n) { background:var(--color-surface); border-color:var(--color-border); box-shadow:0 3px 0 var(--color-brand-border),0 12px 24px var(--color-shadow); }
+.review-card:hover { box-shadow:0 4px 0 var(--color-brand-border),0 18px 28px var(--color-shadow-hover); }
+.review-mark { color:var(--color-brand); }
+.review-card small,.review-pending { color:var(--color-muted); }
+.photographic-quote { color:var(--color-on-brand); background:var(--color-brand-dark); }
+.photographic-quote .eyebrow,.photographic-quote .quote,.photographic-quote .quote-promise { color:var(--color-on-brand); }
+.quote-placeholder-photo::after { background:var(--color-photo-scrim); }
+.quote-section::after { background:var(--color-bg); }
+.gallery-lightbox::backdrop { background:color-mix(in srgb,var(--color-text) 93%,transparent); }
+.lightbox-close { color:var(--color-on-brand); text-shadow:0 1px 5px var(--color-text); }
+.lightbox-close:hover { color:var(--color-accent); }
+.site-footer.compact-footer { background:var(--color-brand-dark); color:var(--color-on-brand); }
+.site-footer small,.site-footer a { color:var(--color-on-brand); }
+.personality-back-copy { color:var(--color-text); }
+.personality-back-copy strong { color:var(--color-heading); }
+.personality-paper-image { filter:grayscale(1); opacity:.12; }
+.personality-front-art { display:block; width:100%; height:100%; }
+
+/* Calm rectangular cards: one petrol card and one sunny accent card. */
+.rectangle-services { max-width:1120px; grid-template-columns:1fr; gap:22px; padding:12px 4px 24px; grid-auto-rows:1fr; }
+.rectangle-services .flip-service { --service-bg:var(--color-surface); --service-ink:var(--color-text); --service-heading:var(--color-heading); min-height:300px; height:100%; }
+.rectangle-services .flip-service:nth-child(2) { --service-bg:var(--color-service-petrol); --service-ink:var(--color-on-brand); --service-heading:var(--color-on-brand); }
+.rectangle-services .flip-service:nth-child(5) { --service-bg:var(--color-accent); --service-ink:var(--color-on-accent); --service-heading:var(--color-on-accent); }
+.rectangle-services .flip-face { padding:28px; min-height:300px; border:1px solid var(--color-border); border-radius:14px; background:var(--service-bg); color:var(--service-ink); box-shadow:0 6px 18px var(--color-shadow); }
+.rectangle-services .flip-face h3 { color:var(--service-heading); font-family:"Bodoni Moda",Georgia,serif; font-size:26px; line-height:1.2; margin:0 0 14px; text-wrap:balance; }
+.rectangle-services .flip-face p { font-size:16px; line-height:1.7; margin:0; }
+.rectangle-services .service-icon { display:block; width:54px; height:54px; padding:6px; border-radius:50%; background:var(--color-accent-soft); color:var(--color-heading); margin:0 0 18px; }
+.rectangle-services .service-icon svg { width:100%; height:100%; }
+.rectangle-services .service-icon svg > circle:first-child { fill:none; }
+.rectangle-services .flip-toggle { border-radius:14px; clip-path:none; }
+.rectangle-services .flip-toggle:focus-visible { outline:3px solid var(--color-focus); outline-offset:4px; }
+@media(min-width:650px) { .rectangle-services { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media(min-width:1100px) { .rectangle-services { grid-template-columns:repeat(3,minmax(0,1fr)); } }
+@media(max-width:1023px) and (min-width:768px) { .site-header .header-contact { font-size:13px; } }
+@media(max-width:420px) { .site-header .header-contact .contact-arrow { display:none; } .site-header .header-contact { gap:0; } }
+
+/* Visible warmth in a few larger accents, rather than a blue wash. */
+.title-dot { color:var(--color-accent); }
+.difference-copy,.story-opening { border-color:var(--color-accent); }
+.story-details summary { background:var(--color-accent-soft); border-color:var(--color-accent); color:var(--color-text); }
+.story-details summary:hover { background:var(--color-accent); }
+.contact-section { background:var(--color-surface-muted); border-top:4px solid var(--color-accent); }
+.free-badge { background:var(--color-accent-soft); color:var(--color-text); }
+.cm-cards .cm-icon { padding:8px; border-radius:50%; background:var(--color-accent-soft); }
+.review-mark { color:var(--color-heading); }
+.photographic-quote .quote-promise { display:inline-block; padding-bottom:10px; border-bottom:3px solid var(--color-accent); }
+.site-footer.compact-footer { border-top:3px solid var(--color-accent); }
