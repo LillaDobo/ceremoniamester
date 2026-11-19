@@ -1,6 +1,6 @@
 # Faur Richárd – a weboldal színrendszere
 
-Frissítve: **2026. november 19.** A dokumentum a jelenlegi, meleg törtfehér–petroltürkiz–napsárga palettát és a téglalap alakú szolgáltatáskártyákat írja le.
+Frissítve: **2026. november 19.** A dokumentum a jelenlegi, meleg törtfehér–zöldes petrol–napsárga palettát és a téglalap alakú szolgáltatáskártyákat írja le.
 
 A cél egy laza, közvetlen, mégis összeszedett megjelenés. A meleg törtfehér hagyja érvényesülni a fotókat, a füstös petrol ad karaktert és szakmai tartást, a napsárga pedig a kapcsolatfelvételre és az apró, játékos részletekre irányítja a figyelmet.
 
@@ -11,10 +11,16 @@ Minden felületi szín az [app/colors.css](../app/colors.css) fájlból származ
 | Alapszín | Változó | Mostani érték | Feladat |
 | --- | --- | --- | --- |
 | Meleg törtfehér | `--palette-gray` | `#F4F1EA` | Oldalháttér, nagy üres felületek, semleges kártyák alapja. |
-| Petroltürkiz | `--palette-petrol` | `#2A7F83` | Címek, navigáció, szolgáltatáskártyák, lábléc és fontosabb grafikai elemek. |
+| Zöldes petrol | `--palette-petrol` | `#227371` | Címek, navigáció, lábléc és fontosabb grafikai elemek. |
 | Napsárga | `--palette-yellow` | `#F2B824` | Kapcsolatfelvételi gombok, egy szolgáltatáskártya, ikonrészletek, interaktív kiemelések. |
 
 Az alapszínek módosításával a hozzájuk tartozó világosabb és sötétebb árnyalatok, szegélyek, hoverállapotok és árnyékok **automatikusan újraszámolódnak**. Például a petrolt csak egyszer kell `#2B8A94`-re átírni; nem kell külön megkeresni minden címet és kártyát.
+
+### Külön szín csak a szolgáltatásdobozhoz
+
+A `--color-service-petrol: #2A7F83` szintén az `app/colors.css` fájlban van, de **csak a második szolgáltatásdoboz hátterét** vezérli, mindkét kártyaoldalon. A címeket, a menüt, az ikonokat és a láblécet továbbra is az általános `--palette-petrol: #227371` és annak árnyalatai színezik.
+
+Ha csak ezt a dobozt szeretnénk más árnyalatúra, a `--color-service-petrol` értékét módosítjuk. A négy semleges és az egy napsárga doboz külön színszerepét ez nem érinti.
 
 A módosítás a futó fejlesztői nézetben frissül; a megosztott weboldalhoz az új verzió buildelése és közzététele is szükséges. A böngészőikon ugyanebből a palettából készül a `predev` és `prebuild` lépésben. Ha már fut a fejlesztői szerver, a favicon frissítéséhez újraindítás vagy `node scripts/sync-palette.mjs` szükséges.
 
@@ -33,7 +39,8 @@ Az arány vizuális irányelv, nem pixelenként mért kvóta. A fotók természe
 | `--color-bg` | Az oldal alapja | Közvetlenül a meleg törtfehér. |
 | `--color-surface` | Semleges kártya, polaroid, mobilmenü | A szürke fehérrel világosított változata; a háttértől finoman elválik. |
 | `--color-surface-muted` | Másodlagos semleges kitöltés | A szürke fehérrel világosítva; nincs benne petrol. |
-| `--color-brand` | Egy szolgáltatáskártya, szalagcímek és ikonvonalak | Az eredeti petrol. |
+| `--color-brand` | Szalagcímek és ikonvonalak | Az általános petrol. |
+| `--color-service-petrol` | A második szolgáltatáskártya elő- és hátoldala | Külön rögzített `#2A7F83`; az általános petrol átírása nem módosítja. |
 | `--color-heading` | Címek, navigáció | A petrol enyhén sötétített változata, világos felületen is jól olvasható. |
 | `--color-brand-dark` | Lábléc, erős kontraszt, fókusz | Mély petrol; nagy felületen takarékosan. |
 | `--color-brand-soft` | Másodlagos, finom petrolkitöltések | Világos petrol, sötét címmel. |
@@ -62,7 +69,7 @@ A szolgáltatások ismét téglalap alakú kártyák. Hat kártyából négy sem
 | Sorrend | Szolgáltatás | Felület | Szöveg |
 | --- | --- | --- | --- |
 | 1. | Programok közös tervezése | Semleges, világos | Sötét tinta és mély petrol cím |
-| 2. | Helyszín előkészítésének támogatása | Petrol | Világos |
+| 2. | Helyszín előkészítésének támogatása | Külön petroltürkiz: `#2A7F83` | Világos |
 | 3. | Szolgáltatók teljes koordinálása | Semleges, világos | Sötét tinta és mély petrol cím |
 | 4. | Az egész nap koordinálása | Semleges, világos | Sötét tinta és mély petrol cím |
 | 5. | Programok felkonferálása, játékok | Napsárga | Sötét |
@@ -72,18 +79,18 @@ A hátoldal ugyanazt a felület- és szövegszínt használja, mint az előlap. 
 
 ### Miért lett kevésbé kékes?
 
-Az előző `#E8ECEF` hűvös szürke, a `#1A7A82` kékes petrol volt. A jelenlegi `#F4F1EA` meleg törtfehér alap; a `#2A7F83` a kért petroltürkiz. A nagy semleges felületeket már nem színezzük petrollal: a szöveg, a szegély és az árnyék is semlegesebb. A napsárga `#F2B824` megmaradt, de több jól látható felületet kapott. A 60–30–10 arány továbbra is az összhatás iránya, nem a komponensek darabszáma.
+Az előző `#E8ECEF` hűvös szürke, a `#1A7A82` kékes petrol volt. A jelenlegi `#F4F1EA` meleg törtfehér alap; az általános petrol `#227371`. A `#2A7F83` kizárólag a petrolszínű szolgáltatáskártya felülete. A nagy semleges felületeket már nem színezzük petrollal: a szöveg, a szegély és az árnyék is semlegesebb. A napsárga `#F2B824` megmaradt, de több jól látható felületet kapott. A 60–30–10 arány továbbra is az összhatás iránya, nem a komponensek darabszáma.
 
 ## Hogyan kérj később színváltoztatást?
 
 - „A szürke alap legyen `#D8DEDF`.” → csak a `--palette-gray` értéke változik.
-- „A petrol legyen `#2B8A94`.” → csak a `--palette-petrol` értéke változik; a címek, kártyák, halvány kitöltések és a sötét petrol is követi.
+- „A petrol legyen `#2B8A94`.” → csak a `--palette-petrol` értéke változik; a címek, halvány kitöltések és a sötét petrol is követi. A külön színezett szolgáltatásdoboz önálló marad.
 - „A sárga legyen `#E6A100`.” → csak a `--palette-yellow` értéke változik; a gombok, ikonakcentusok és hoverek is követik.
 - „Csak a kapcsolatblokk legyen világosabb.” → a kapcsolatblokk szerepét kell másik, már létező színváltozóra kötni az `app/brand.css` fájlban; nem kell új hexkód.
 
 ## Fejlesztési szabályok
 
-1. Új felületi hexkódot kizárólag az `app/colors.css` palettarészébe írunk. Alapesetben a három meglévő alapszín elég.
+1. Új felületi hexkódot kizárólag az `app/colors.css` palettarészébe írunk. A három általános alapszín mellett a szolgáltatásdobozhoz egy külön, dokumentált színkód van.
 2. Az elrendezési szabályok az `app/globals.css`, a komponensek színszerepei az `app/brand.css` fájlban vannak. Mindkettő a közös változókat használja.
 3. Az ikonok és az aktívan használt SVG-k ugyanazokat a szerepeket kapják. A `components/personality-front.tsx` az eredeti kártyák témázható vektorváltozata; a `public/images/cards/*.svg` fájlok megőrzött forrásgrafikák, a felületen már nem közvetlenül jelennek meg.
 4. A fotók természetes színei és a textúra képpontjai nem CSS-színek; csak az alájuk/föléjük tett felületi rétegek témázhatók. Az `app/icon.svg` generált fájl, kézzel nem szerkesztjük.
@@ -96,11 +103,12 @@ Az alábbi kontrasztarányok a CSS-ben megadott, származtatott színekből szá
 
 | Párosítás | Számolt kontraszt |
 | --- | ---: |
-| Folyószöveg / törtfehér háttér | 16,75 : 1 |
-| Cím / törtfehér háttér | 5,40 : 1 |
-| Magyarázó szöveg / törtfehér háttér | 6,37 : 1 |
-| Világos szöveg / petrol | 4,59 : 1 |
-| Sötét szöveg / napsárga | 10,49 : 1 |
+| Folyószöveg / törtfehér háttér | 16,98 : 1 |
+| Cím / törtfehér háttér | 6,29 : 1 |
+| Magyarázó szöveg / törtfehér háttér | 6,80 : 1 |
+| Világos szöveg / petrol | 5,44 : 1 |
+| Sötét szöveg / napsárga | 10,63 : 1 |
+| Világos szöveg / szolgáltatásdoboz | 4,59 : 1 |
 
 ## Generált böngészőikon és Git-frissítés
 
@@ -125,5 +133,7 @@ Minden további palettamódosítást ebben a naplóban is rögzítünk; a fenti 
 | --- | --- | --- | --- | --- |
 | 2026. november 19. | Oldalháttér (`--palette-gray`) | `#E5E4DF` | `#F4F1EA` | Meleg törtfehér háttér; a semleges felületek és a származtatott árnyalatok is követik. |
 | 2026. november 19. | Petrol alapszín (`--palette-petrol`) | `#287B76` | `#2A7F83` | A korábbi zöldes petrol helyett a kért petroltürkiz; címek, kártya, ikonok és lábléc is követi. |
+| 2026. november 19. – pontosítás | Általános petrol (`--palette-petrol`) | `#2A7F83` | `#227371` | A fő arculati petrol a kért végleges árnyalatot kapja; a címek, menü, ikonok és lábléc követik. |
+| 2026. november 19. – pontosítás | Második szolgáltatásdoboz (`--color-service-petrol`) | Az általános petrolból örökölt | `#2A7F83` | Önálló háttérszín; kizárólag a hatdobozos rész petrolszínű dobozának két oldalát vezérli. |
 
-A napsárga `#F2B824` ebben a módosításban nem változott.
+A napsárga `#F2B824` és a törtfehér háttér `#F4F1EA` ebben a pontosításban nem változott.

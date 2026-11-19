@@ -54,7 +54,7 @@ h1,h2,h3,.header-brand { color:var(--color-heading); }
 /* Calm rectangular cards: one petrol card and one sunny accent card. */
 .rectangle-services { max-width:1120px; grid-template-columns:1fr; gap:22px; padding:12px 4px 24px; grid-auto-rows:1fr; }
 .rectangle-services .flip-service { --service-bg:var(--color-surface); --service-ink:var(--color-text); --service-heading:var(--color-heading); min-height:300px; height:100%; }
-.rectangle-services .flip-service:nth-child(2) { --service-bg:var(--color-brand); --service-ink:var(--color-on-brand); --service-heading:var(--color-on-brand); }
+.rectangle-services .flip-service:nth-child(2) { --service-bg:var(--color-service-petrol); --service-ink:var(--color-on-brand); --service-heading:var(--color-on-brand); }
 .rectangle-services .flip-service:nth-child(5) { --service-bg:var(--color-accent); --service-ink:var(--color-on-accent); --service-heading:var(--color-on-accent); }
 .rectangle-services .flip-face { padding:28px; min-height:300px; border:1px solid var(--color-border); border-radius:14px; background:var(--service-bg); color:var(--service-ink); box-shadow:0 6px 18px var(--color-shadow); }
 .rectangle-services .flip-face h3 { color:var(--service-heading); font-family:"Bodoni Moda",Georgia,serif; font-size:26px; line-height:1.2; margin:0 0 14px; text-wrap:balance; }

@@ -1,7 +1,8 @@
-/* The only three editable palette hex codes. See docs/SZINRENDSZER.md. */
+/* Three global palette colours and one service-card override. See docs/SZINRENDSZER.md. */
 :root {
   --palette-gray: #F4F1EA;
-  --palette-petrol: #2A7F83;
+  --palette-petrol: #227371;
+  --color-service-petrol: #2A7F83;
   --palette-yellow: #F2B824;
 
   --color-bg: var(--palette-gray);
