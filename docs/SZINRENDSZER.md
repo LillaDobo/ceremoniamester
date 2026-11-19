@@ -1,10 +1,12 @@
 # Faur Richárd – a weboldal színrendszere
 
+Frissítve: **2026. november 19.** A dokumentum a jelenlegi, melegebb szürke–zöldes petrol–napsárga palettát és a téglalap alakú szolgáltatáskártyákat írja le.
+
 A cél egy laza, közvetlen, mégis összeszedett megjelenés. A világos kavicsszürke hagyja érvényesülni a fotókat, a füstös petrol ad karaktert és szakmai tartást, a napsárga pedig a kapcsolatfelvételre és az apró, játékos részletekre irányítja a figyelmet.
 
 ## Három alapszín, egyetlen szerkesztési hely
 
-Minden felületi szín az **`app/colors.css`** fájlból származik. Az elején három hexkód szerkeszthető:
+Minden felületi szín az [app/colors.css](../app/colors.css) fájlból származik. Az elején három hexkód szerkeszthető:
 
 | Alapszín | Változó | Mostani érték | Feladat |
 | --- | --- | --- | --- |
@@ -47,13 +49,26 @@ Az arány vizuális irányelv, nem pixelenként mért kvóta. A fotók természe
 
 ## Árnyékok, textúrák és interakciók
 
-Az árnyékok nem tiszta feketéből készülnek. A `--color-shadow` a sötét tintaszín 12%-os, a `--color-shadow-hover` 20%-os változata. A nagyobb kártyák finom, elmosott árnyékot kapnak; a hover enyhe kiemelkedést ad. A szegély és az árnyék együtt választja el a semleges kártyát a szürke háttértől.
+Az árnyékok nem tiszta feketéből készülnek. A `--color-shadow` a sötét tintaszín 12%-os, a `--color-shadow-hover` 20%-os változata. A nagyobb kártyák finom, elmosott árnyékot kapnak; a véleménykártyáknál a hover enyhe kiemelkedést ad. A szegély és az árnyék együtt választja el a semleges kártyát a szürke háttértől.
 
 A személyiségkártyák eredeti vonalas grafikái megmaradnak, de a színeiket már a CSS-változók adják. A papírtextúra szürkeárnyalatos, 12%-os fedésű, ezért nem visz vissza külön bézs vagy rózsaszín tónust. Mindkét kártyaoldal ugyanarra a textúrára és színre hivatkozik.
 
 A linkek petrolszínűek, rámutatásra sárga aláhúzás jelenik meg. A billentyűzetfókusz jól látható mély petrol keretet kap. Petrolkártyán világos szöveg, sárga gombon sötét szöveg szerepel. Fotón a világos felirat alatt mindig sötétítő réteg van.
 
 A szolgáltatások ismét téglalap alakú kártyák. Hat kártyából négy semleges, egy petrol, egy pedig napsárga. A sárga kártyán sötét szöveg szerepel; ez a nagyobb akcentus biztosítja, hogy a sárga ne csak apró, alig észrevehető ikonokban jelenjen meg. A gombok, az ikonalapok, a történetgomb, néhány vékony szegély és az idézet zárósorának aláhúzása is ezt támogatja.
+
+### A hat szolgáltatáskártya színkiosztása
+
+| Sorrend | Szolgáltatás | Felület | Szöveg |
+| --- | --- | --- | --- |
+| 1. | Programok közös tervezése | Semleges, világos | Sötét tinta és mély petrol cím |
+| 2. | Helyszín előkészítésének támogatása | Petrol | Világos |
+| 3. | Szolgáltatók teljes koordinálása | Semleges, világos | Sötét tinta és mély petrol cím |
+| 4. | Az egész nap koordinálása | Semleges, világos | Sötét tinta és mély petrol cím |
+| 5. | Programok felkonferálása, játékok | Napsárga | Sötét |
+| 6. | Egyéni szertartásvezetés | Semleges, világos | Sötét tinta és mély petrol cím |
+
+A hátoldal ugyanazt a felület- és szövegszínt használja, mint az előlap. A pontos komponensszerepek az [app/brand.css](../app/brand.css) fájlban találhatók.
 
 ### Miért lett kevésbé kékes?
 
@@ -73,3 +88,30 @@ Az előző `#E8ECEF` hűvös szürke, a `#1A7A82` kékes petrol volt. A mostani 
 3. Az ikonok és az aktívan használt SVG-k ugyanazokat a szerepeket kapják. A `components/personality-front.tsx` az eredeti kártyák témázható vektorváltozata; a `public/images/cards/*.svg` fájlok megőrzött forrásgrafikák, a felületen már nem közvetlenül jelennek meg.
 4. A fotók természetes színei és a textúra képpontjai nem CSS-színek; csak az alájuk/föléjük tett felületi rétegek témázhatók. Az `app/icon.svg` generált fájl, kézzel nem szerkesztjük.
 5. Palettaváltás után ellenőrizni kell a címek, a gombok, a halvány szövegek és a fotófeliratok olvashatóságát, a hover/fókusz állapotokat és a mobilnézetet. A világosabb petrol önmagában nem garantál elegendő kontrasztot, ezért a címek és a fókusz külön, származtatott sötétebb árnyalatot használnak.
+
+
+## A jelenlegi paletta olvashatósága
+
+Az alábbi kontrasztarányok a CSS-ben megadott, származtatott színekből számolt értékek. Fotókra és textúrákra nem érvényesek automatikusan; azoknál a tényleges hátteret és sötétítést is ellenőrizni kell.
+
+| Párosítás | Számolt kontraszt |
+| --- | ---: |
+| Folyószöveg / szürke háttér | 14,92 : 1 |
+| Cím / szürke háttér | 5,07 : 1 |
+| Magyarázó szöveg / szürke háttér | 5,78 : 1 |
+| Világos szöveg / petrol | 4,77 : 1 |
+| Sötét szöveg / napsárga | 10,54 : 1 |
+
+## Generált böngészőikon és Git-frissítés
+
+Az [app/icon.svg](../app/icon.svg) a [scripts/sync-palette.mjs](../scripts/sync-palette.mjs) által generált fájl. A színeit a palettában módosítjuk, nem közvetlenül az SVG-ben.
+
+Ha a `git pull` kizárólag ennek a generált fájlnak a helyi módosítása miatt áll meg, a fejlesztői szerver leállítása után az alábbi parancsokkal frissíthető a projekt:
+
+```powershell
+git restore -- app/icon.svg
+git pull origin feat/static-nextjs-site
+npm.cmd run dev
+```
+
+A `git restore` itt csak a generált ikon helyi módosítását dobja el. Más, saját módosítás alatt álló fájlokra ezt a lépést nem kell kiterjeszteni.
